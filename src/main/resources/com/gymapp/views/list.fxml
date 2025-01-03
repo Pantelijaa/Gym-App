@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gymapp.components.BottomBar?>
+<?import com.gymapp.components.SidePanel?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="list" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gymapp.controllers.ListController">
+   <center>
+      <TableView id="members-table-view" fx:id="membersTableView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+        <columns>
+            <TableColumn fx:id="id" maxWidth="100.0" minWidth="40.0" prefWidth="40.0" text="ID" />
+          <TableColumn fx:id="firstName" minWidth="150.0" prefWidth="200.0" text="First Name" />
+          <TableColumn fx:id="lastName" minWidth="150.0" prefWidth="200.0" text="Last Name" />
+            <TableColumn fx:id="membershipType" minWidth="150.0" prefWidth="200.0" text="Membership" />
+            <TableColumn fx:id="recentPurchase" minWidth="150.0" prefWidth="200.0" text="Recent Purchase" />
+            <TableColumn fx:id="expiresAt" minWidth="150.0" prefWidth="200.0" text="Expires At" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </TableView>
+   </center>
+   <left>
+      <SidePanel fx:id="sidePanel" BorderPane.alignment="CENTER" />
+   </left>
+   <bottom>
+      <BottomBar BorderPane.alignment="CENTER" />
+   </bottom>
+   <stylesheets>
+      <URL value="@../css/main.css" />
+      <URL value="@../css/list.css" />
+   </stylesheets>
+</BorderPane>

@@ -1,0 +1,54 @@
+#scan-viewer-container {
+    -fx-background-color: -fx-base-background-color;
+}
+
+#scan-viewer-container .title-label {
+    -fx-padding: 1em 0 0 1em;
+    -fx-font-size: 14px;
+}
+#scan-viewer-container .content-label {
+    -fx-padding: 0.2em 1em 0.2em 0.5em;
+    -fx-font-size: 16px;
+    -fx-background-color: -fx-menu-active-background-color;
+}
+
+#scan-viewer-container #left-content {
+    -fx-border-width: 0.2em 0 0.2em 0.2em;
+    -fx-border-color: -fx-separator-background-color;
+}
+
+#scan-viewer-container #right-content {
+    -fx-border-width: 0.2em 0.2em 0.2em 0;
+    -fx-border-color: -fx-separator-background-color;
+}
+
+.extend-choice-box {
+    -fx-background-color: -fx-menu-background-color;
+    -fx-border-radius: 0.3em;
+}
+
+.extend-choice-box .context-menu {
+    -fx-background-color: -fx-menu-background-color;
+}
+
+.extend-choice-box .context-menu .label {
+    -fx-text-fill: -fx-menu-foreground-color;
+}
+
+.extend-choice-box .menu-item:focused {
+  -fx-background-color: -fx-menu-active-background-color;
+}
+
+.extend-choice-box .menu-item:focused .label {
+    -fx-text-fill: -fx-menu-active-foreground-color;
+}
+
+.extend-button {
+    -fx-background-color: -fx-menu-background-color;
+    -fx-text-fill: -fx-menu-foreground-color;
+}
+
+.extend-button:hover {
+    -fx-background-color: -fx-menu-active-background-color;
+    -fx-text-fill: -fx-menu-active-foreground-color;
+}

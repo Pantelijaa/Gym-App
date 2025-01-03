@@ -1,0 +1,19 @@
+* {
+    -fx-base-background-color: #23272e;
+    -fx-menu-background-color: #1e2227;
+    -fx-menu-foreground-color: #abb2bf;
+    -fx-menu-active-background-color: #2c313a;
+    -fx-menu-active-foreground-color: #d7dae0;
+    -fx-separator-background-color: #343a45;
+    -fx-scroll-bar-background-color: #4e566660;
+    -fx-scroll-bar-active-background-color: #747d9180;
+    -fx-scroll-bar-hover-background-color: #5a637580;
+    -fx-pie-chart-0-color: #56b6c2;
+    -fx-pie-chart-1-color: #d19a66;
+    -fx-line-chart-color: #e5c07b
+}
+
+.label {
+    -fx-text-fill: -fx-menu-foreground-color;
+}
+

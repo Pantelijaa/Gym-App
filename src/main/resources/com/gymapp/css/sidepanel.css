@@ -1,0 +1,11 @@
+.side-panel {
+    -fx-background-color: -fx-menu-background-color;
+    -fx-border-width: 0 0.2em 0 0;
+    -fx-border-color: -fx-separator-background-color;
+}
+
+.sidepanel-active {
+    -fx-background-color: -fx-menu-active-background-color;
+    -fx-border-width: 0 0 0 0.3em;
+    -fx-border-color:  -fx-menu-active-foreground-color;
+}

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gymapp.components.BottomBar?>
+<?import com.gymapp.components.SidePanel?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="add" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gymapp.controllers.AddController">
+   <left>
+      <SidePanel fx:id="sidePanel" BorderPane.alignment="CENTER" />
+   </left>
+   <bottom>
+      <BottomBar fx:id="bottomBar" BorderPane.alignment="CENTER" />
+   </bottom>
+   <center>
+      <HBox id="add-container" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+         <children>
+            <VBox fx:id="newMemberBox" alignment="CENTER">
+               <children>
+                  <Label alignment="TOP_CENTER" prefHeight="27.0" prefWidth="183.0" text="Add new member" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label text="First Name:">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="firstNameTextField" styleClass="add-text-field">
+                     <VBox.margin>
+                        <Insets top="3.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label text="Last Name:">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="lastNameTextField" styleClass="add-text-field">
+                     <VBox.margin>
+                        <Insets top="3.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label text="Membership:">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <ChoiceBox fx:id="chooseMembership" prefHeight="26.0" prefWidth="202.0" styleClass="add-choice-box">
+                     <VBox.margin>
+                        <Insets top="3.0" />
+                     </VBox.margin>
+                  </ChoiceBox>
+                  <Button fx:id="addBtn" mnemonicParsing="false" onAction="#handleAddBtn" prefHeight="26.0" prefWidth="90.0" styleClass="add-button" text="Button">
+                     <VBox.margin>
+                        <Insets left="25.0" right="25.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </VBox>
+         </children>
+      </HBox>
+   </center>
+   <stylesheets>
+      <URL value="@../css/main.css" />
+      <URL value="@../css/add.css" />
+   </stylesheets>
+</BorderPane>

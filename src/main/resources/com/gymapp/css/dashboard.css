@@ -1,0 +1,58 @@
+#dashboard {
+    -fx-background-color: -fx-base-background-color;
+}
+#dashboard-container {
+    -fx-background-color: -fx-base-background-color;
+}
+
+#dashboard-container #returning-pie-chart .data0 {
+    -fx-pie-color: -fx-pie-chart-0-color;
+}
+
+#dashboard-container #returning-pie-chart .data1 {
+    -fx-pie-color: -fx-pie-chart-1-color;
+}
+
+#dashboard-container #returning-pie-chart .chart-title {
+    -fx-font-size: 20px;
+}
+
+#dashboard-container #returning-pie-chart .chart-legend {
+    -fx-background-color: inherit;
+    -fx-border-width: 0.2em;
+    -fx-border-radius: 0.3em;
+    -fx-border-color: -fx-separator-background-color;
+}
+
+#dashboard-container #returning-pie-chart .chart-pie-label {
+    -fx-fill: -fx-menu-foreground-color;
+}
+
+#dashboard-container #returning-pie-chart .chart-pie-label-line {
+    -fx-stroke: -fx-menu-active-foreground-color;
+    -fx-fill: -fx-menu-active-background-color;
+}
+
+#dashboard-container #history-line-chart .chart-series-line.series0,
+#dashboard-container #history-line-chart .chart-line-symbol.series0  {
+    -fx-background-color: -fx-menu-foreground-color;
+    -fx-stroke: -fx-line-chart-color;
+}
+
+#dashboard-container #history-line-chart .chart-plot-background {
+    -fx-background-color: -fx-menu-background-color;
+    -fx-border-width: 0.1em 0.1em 0 0;
+    -fx-border-color: -fx-separator-background-color;
+}
+
+#dashboard-container #history-line-chart .axis {
+    -fx-tick-label-fill: -fx-menu-foreground-color;
+}
+
+#dashboard-container #history-line-chart .axis-label {
+    -fx-text-fill: -fx-menu-foreground-color;
+}
+
+#dashboard-container #history-line-chart .chart-title {
+    -fx-font-size: 20px;
+}

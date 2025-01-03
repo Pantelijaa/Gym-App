@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gymapp.components.BottomBar?>
+<?import com.gymapp.components.SidePanel?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="scanViewer" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gymapp.controllers.ScanViewerController">
+   <left>
+      <SidePanel fx:id="sidePanel" BorderPane.alignment="CENTER" />
+   </left>
+   <bottom>
+      <BottomBar fx:id="bottomBar" BorderPane.alignment="CENTER" />
+   </bottom>
+   <stylesheets>
+      <URL value="@../css/main.css" />
+      <URL value="@../css/scanviewer.css" />
+   </stylesheets>
+   <center>
+      <HBox id="scan-viewer-container" alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <VBox id="left-content" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity">
+               <children>
+                  <Label styleClass="title-label" text="ID">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="labelID" styleClass="content-label" text="Label">
+                     <VBox.margin>
+                        <Insets left="25.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label styleClass="title-label" text="First Name">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="labelFirstName" styleClass="content-label" text="Label">
+                     <VBox.margin>
+                        <Insets left="25.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label styleClass="title-label" text="Last Name">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="labelLastName" styleClass="content-label" text="Label">
+                     <VBox.margin>
+                        <Insets left="25.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label styleClass="title-label" text="Membership Type">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="labelMembership" styleClass="content-label" text="Label">
+                     <VBox.margin>
+                        <Insets left="25.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label styleClass="title-label" text="Purchased At">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="labelPurchase" styleClass="content-label" text="Label">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="25.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label styleClass="title-label" text="Expires At">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="labelExpire" styleClass="content-label" text="Label">
+                     <VBox.margin>
+                        <Insets bottom="16.0" left="25.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </VBox>
+            <VBox id="right-content" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity">
+               <children>
+                  <ImageView fx:id="ivQr" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets right="16.0" top="40.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Region prefHeight="108.0" />
+                  <Label styleClass="title-label" text="Extend Membership">
+                     <VBox.margin>
+                        <Insets bottom="3.0" />
+                     </VBox.margin>
+                  </Label>
+                  <ChoiceBox id="extend-choice-box" fx:id="chooseMembership" prefWidth="150.0" styleClass="extend-choice-box" />
+                  <Button id="extend-button" mnemonicParsing="false" onMouseClicked="#handleExtendButton" styleClass="extend-button" text="Extend">
+                     <VBox.margin>
+                        <Insets bottom="60.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </VBox>
+         </children>
+      </HBox>
+   </center>
+</BorderPane>

@@ -1,0 +1,46 @@
+#members-table-view {
+    -fx-background-color: -fx-menu-background-color;
+}
+
+#members-table-view .scroll-bar {
+    -fx-background-color: -fx-scroll-bar-background-color;
+    -fx-border-color: -fx-separator-background-color;
+}
+
+#members-table-view .scroll-bar .thumb {
+    -fx-background-color: derive(-fx-scroll-bar-background-color,90%);
+	-fx-background-insets: 0, 0, 0;
+	-fx-background-radius: 0em;
+}
+
+#members-table-view .scroll-bar .thumb:hover {
+    -fx-background-color: -fx-scroll-bar-hover-background-color;
+}
+
+#members-table-view .scroll-bar .thumb:pressed {
+    -fx-background-color: -fx-scroll-bar-active-background-color;
+}
+
+#members-table-view .column-header-background .filler,
+#members-table-view .column-header-background .nested-column-header,
+#members-table-view .column-header {
+    -fx-background-color: -fx-base-background-color;
+}
+
+#members-table-view .column-header-background .label {
+    -fx-text-fill: -fx-menu-foreground-color;
+}
+
+#members-table-view .table-cell {
+    -fx-text-fill: -fx-menu-foreground-color;
+    -fx-border-color: -fx-separator-background-color;
+    -fx-padding: 0.3em;
+}
+
+#members-table-view .table-row-cell {
+    -fx-background-color: -fx-menu-background-color;
+}
+
+#members-table-view .table-row-cell:odd {
+    -fx-background-color: -fx-menu-active-background-color;
+}

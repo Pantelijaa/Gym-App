@@ -1,0 +1,40 @@
+#add-container {
+    -fx-background-color: -fx-base-background-color;
+}
+
+#add-container .add-text-field {
+    -fx-background-color: -fx-menu-background-color;
+    -fx-border-radius: 0.3em;
+    -fx-text-fill: -fx-menu-foreground-color;
+}
+
+#add-container .add-choice-box {
+    -fx-background-color: -fx-menu-background-color;
+    -fx-border-radius: 0.3em;
+}
+
+#add-container .add-choice-box .context-menu {
+    -fx-background-color: -fx-menu-background-color;
+}
+
+#add-container .add-choice-box .context-menu .label {
+    -fx-text-fill: -fx-menu-foreground-color;
+}
+
+#add-container .add-choice-box .menu-item:focused {
+  -fx-background-color: -fx-menu-active-background-color;
+}
+
+#add-container .add-choice-box .menu-item:focused .label {
+    -fx-text-fill: -fx-menu-active-foreground-color;
+}
+
+#add-container .add-button {
+    -fx-background-color: -fx-menu-background-color;
+    -fx-text-fill: -fx-menu-foreground-color;
+}
+
+#add-container .add-button:hover {
+    -fx-background-color: -fx-menu-active-background-color;
+    -fx-text-fill: -fx-menu-active-foreground-color;
+}

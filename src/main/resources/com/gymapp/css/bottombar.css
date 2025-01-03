@@ -1,0 +1,6 @@
+.bottom-bar {
+    -fx-background-color: -fx-menu-background-color;
+    -fx-text-fill: -fx-menu-foreground-color;
+    -fx-border-width: 0.2em 0 0 0;
+    -fx-border-color: -fx-separator-background-color;
+}
