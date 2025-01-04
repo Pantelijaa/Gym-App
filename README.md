@@ -1,6 +1,10 @@
-![GitHub Repo stars](https://img.shields.io/github/stars/Pantelijaa/Gym-App?style=flat&logo=github&color=%23d05613)
-![GitHub forks](https://img.shields.io/github/forks/Pantelijaa/Gym-App?style=flat&logo=github&color=%234b9607)
-![GitHub watchers](https://img.shields.io/github/watchers/Pantelijaa/Gym-App?style=flat&logo=github&color=%23143ee8)
+<div align="center">
+   
+   ![GitHub Repo stars](https://img.shields.io/github/stars/Pantelijaa/Gym-App?style=flat&logo=github&color=%23d05613)
+   ![GitHub forks](https://img.shields.io/github/forks/Pantelijaa/Gym-App?style=flat&logo=github&color=%234b9607)
+   ![GitHub watchers](https://img.shields.io/github/watchers/Pantelijaa/Gym-App?style=flat&logo=github&color=%23143ee8)
+   
+</div>
 
 <a id="readme-top"></a>
 
