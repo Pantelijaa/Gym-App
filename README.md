@@ -71,8 +71,6 @@ Distributed under the MIT license. See `LICENSE` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-* ![Static Badge](https://img.shields.io/badge/GitHub-%23181717?style=for-the-badge&logo=github&link=https%3A%2F%2Fwww.github.com/%2F)
-
 [Java-badge]: https://img.shields.io/badge/Java-%23000000?style=for-the-badge&logo=openjdk&link=https%3A%2F%2Fwww.java.com%2Fen%2F
 [Java-url]: https://www.java.com/en/
 [CSS-badge]: https://img.shields.io/badge/CSS-%23663399?style=for-the-badge&logo=css
