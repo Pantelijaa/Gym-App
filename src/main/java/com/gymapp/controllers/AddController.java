@@ -113,7 +113,7 @@ public class AddController implements Initializable {
     }
 
     private void generateQR(String data) {
-        String path = "src/main/resources/com/gymapp/QR/"+ data + ".png";
+        String path = "src/main/resources/com/gymapp/QR/" + data + ".png";
         String charset = "UTF-8";
         Map<EncodeHintType, ErrorCorrectionLevel> hashMap = new HashMap<>();
         hashMap.put(EncodeHintType.ERROR_CORRECTION,ErrorCorrectionLevel.L);
