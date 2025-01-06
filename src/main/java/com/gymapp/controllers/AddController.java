@@ -64,7 +64,12 @@ public class AddController implements Initializable {
         * Cuz small ones are hard to read
         * And adds additional possibility for security check
         */
-        String data = String.format("%d %s %s %s", this.getLastID(), gymMember.getFirstName(), gymMember.getLastName(), App.getCheckValue());
+        String data = String.format("%d %s %s %s",
+            this.getLastID(),
+            gymMember.getFirstName(),
+            gymMember.getLastName(), 
+            App.getCheckValue()
+        );
         try {
             generateQR(data);
         } catch (Exception e) {
@@ -81,7 +86,14 @@ public class AddController implements Initializable {
 
     private void addNewMember(GymMember gymMember) {
         int membershipID = this.membershipTypeToID(gymMember.getMembershipType());
-        String insertQuery = String.format("INSERT INTO Members(first_name, last_name, membership_id, recent_purchase, expires_at) VALUES('%s', '%s', %d, '%s', '%s')", gymMember.getFirstName(), gymMember.getLastName(), membershipID, this.getCurrentDate(), this.extendMembership(gymMember.getMembershipType()));
+        String insertQuery = String.format("INSERT INTO Members(first_name, last_name, membership_id, recent_purchase, expires_at) VALUES('%s', '%s', %d, '%s', '%s')",
+            gymMember.getFirstName(),
+            gymMember.getLastName(),
+            membershipID,
+            this.getCurrentDate(),
+            this.extendMembership(gymMember.getMembershipType())
+        );
+
         try {
             dbLink.queryInsertDB(insertQuery);
         } catch (Exception e) {

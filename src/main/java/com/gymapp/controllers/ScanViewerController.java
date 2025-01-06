@@ -63,7 +63,11 @@ public class ScanViewerController implements Initializable {
         }
 
         dbLink.getDBConnection();
-        searchQuery = String.format("SELECT Members.id, Members.first_name, Members.last_name, Members.recent_purchase, Members.expires_at, Memberships.type FROM Members, Memberships WHERE Members.id = %s AND Members.first_name='%s' AND Members.last_name='%s' AND Memberships.id = Members.membership_id", dataSubstrings[0], dataSubstrings[1], dataSubstrings[2]);
+        searchQuery = String.format("SELECT Members.id, Members.first_name, Members.last_name, Members.recent_purchase, Members.expires_at, Memberships.type FROM Members, Memberships WHERE Members.id = %s AND Members.first_name='%s' AND Members.last_name='%s' AND Memberships.id = Members.membership_id",
+            dataSubstrings[0],
+            dataSubstrings[1],
+            dataSubstrings[2]
+        );
         ResultSet queryOutput = dbLink.querySearchDB(searchQuery);
         try {
             gymMember.setId(queryOutput.getInt("id"));
@@ -80,7 +84,17 @@ public class ScanViewerController implements Initializable {
             labelPurchase.setText(gymMember.getRecentPurchase());
             labelExpire.setText(gymMember.getExpiresAt());
 
-            Image image = new Image(String.format("file:src/main/resources/com/gymapp/QR/%s %s %s %s.png", gymMember.getId(), gymMember.getFirstName(), gymMember.getLastName(), App.getCheckValue()), 150, 150, true, true);
+            Image image = new Image(String.format("file:src/main/resources/com/gymapp/QR/%s %s %s %s.png",
+                gymMember.getId(),
+                gymMember.getFirstName(),
+                gymMember.getLastName(),
+                App.getCheckValue()
+                ), 
+                150,
+                150,
+                true, 
+                true
+            );
             ivQr.setImage(image);
 
         } catch (Exception e) {
@@ -108,7 +122,11 @@ public class ScanViewerController implements Initializable {
             e.printStackTrace();
         }
 
-        String updateQuery = String.format("UPDATE Members SET membership_id = %d, recent_purchase = date('now'), expires_at = date(expires_at, '+%s') WHERE id = %d", membershipId , purchasedType.toDateModifier(), gymMember.getId());
+        String updateQuery = String.format("UPDATE Members SET membership_id = %d, recent_purchase = date('now'), expires_at = date(expires_at, '+%s') WHERE id = %d",
+            membershipId,
+            purchasedType.toDateModifier(),
+            gymMember.getId()
+        );
         try {
             dbLink.queryInsertDB(updateQuery);
         } catch (Exception e) {
