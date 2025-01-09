@@ -3,7 +3,7 @@ package com.gymapp.model;
 /**
  * The {@code GymMember} class represents a member of a gym.
  * <p>
- * Includes empty Constcructor and Constructor with parameters for all fields. 
+ * Includes empty Constcructor and Constructor with parameters for all attributes. 
  * Has setters and getters defined for all fields.
  * </p>
  */

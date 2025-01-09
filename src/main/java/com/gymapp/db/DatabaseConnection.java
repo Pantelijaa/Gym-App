@@ -15,6 +15,11 @@ public class DatabaseConnection {
     private Connection databaseLink;
     private ResultSet resultSet;
 
+    /**
+     * Establishes connection with database. {@code url} where database is stored defined locally. 
+     * If you want to use other database {@code url} needs to be changed.
+     * 
+    */
     public void getDBConnection() {
         String url = "jdbc:sqlite:src/main/resources/com/gymapp/db/teretana.db";
 
@@ -34,6 +39,14 @@ public class DatabaseConnection {
         }
     }
 
+    /**
+     *  Executes single SQL statement. Primarly used for searching data from database.
+     * 
+     * @param connectQuery  -   an {@code SQL} statement to be sent to the database,
+     *                          typically a static SQL {@code SELECT} statement
+     * @return                  {@linkplain java.sql.ResultSet ResultSet} object that contains 
+     *                          the data produced by the given query; never {@code null}
+     */
     public ResultSet querySearchDB(String connectQuery) {
         try {
             Statement statement = databaseLink.createStatement();
@@ -43,7 +56,14 @@ public class DatabaseConnection {
         }
         return resultSet;
     }
-    
+    /**
+     * Executes single SQL statement. Primarly used for inserting or editing data in database.
+     * 
+     * @param connectQuery  -    an SQL Data Manipulation Language (DML) statement,
+     *                           such as {@code INSERT}, {@code UPDATE} or {@code DELETE};
+     *                           or an SQL statement that returns nothing,
+     *                           such as a DDL statement.
+     */
     public void queryInsertDB(String connectQuery) {
         try {
             Statement statement = databaseLink.createStatement();

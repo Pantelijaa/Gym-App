@@ -27,6 +27,9 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
 
+/**
+ * Controller for {@code view} <a href="{@docRoot}\..\resources\com\gymapp\views\add.fxml">add.fxml</a>.
+ */
 public class AddController implements Initializable {
     @FXML
     private ChoiceBox<MembershipType> chooseMembership;

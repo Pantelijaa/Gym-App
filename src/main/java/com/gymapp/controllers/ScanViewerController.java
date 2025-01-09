@@ -17,6 +17,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.sql.ResultSet;
 
+/**
+ * Controller for {@code view} <a href ="{@docRoot}\..\resources\com\gymapp\views\scanViewer.fxml">scanViewer.fxml</a>.
+ */
 public class ScanViewerController implements Initializable {
     @FXML 
     private Label labelFirstName;

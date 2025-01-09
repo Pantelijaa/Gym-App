@@ -16,6 +16,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
+/**
+ * Controller for {@code component} <a href ="{@docRoot}\..\resources\com\gymapp\components\bottomBar.fxml">bottomBar.fxml</a>.
+ */
 public class BottomBar extends HBox implements Initializable {
     @FXML
     private Label time;

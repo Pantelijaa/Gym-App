@@ -9,6 +9,14 @@ import java.io.IOException;
 
 import com.gymapp.App;
 
+/**
+ * Controller for {@code component} <a href ="{@docRoot}\..\resources\com\gymapp\components\sidePanel.fxml">sidePanel.fxml</a>.
+ * <p>
+ * In {@code ScanController} method
+ * {@linkplain com.gymapp.controllers.ScanController#sidePanelOnClickDestroysStream sidePanelOnClickDestroysStream()}
+ * all handlers are overriden to support disabling camera stream when view is changed.
+ * </p>
+ */
 public class SidePanel extends VBox {
     @FXML
     private HBox dashboardBtn;
@@ -33,10 +41,6 @@ public class SidePanel extends VBox {
         }
     }
 
-    /*
-     * In ScanController.java private void sidePanelDestroysCameraStream() 
-     * all handlers are overriden to support disabling camera stream on view swap
-     */
     public void handleDashboard() {
         App.changeView("dashboard"); 
     }
@@ -56,7 +60,5 @@ public class SidePanel extends VBox {
     public void handleExit() {
         App.closeProgram();
     }
-
-
 
 }

@@ -18,6 +18,9 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
+/**
+ * Controller for {@code view} <a href="{@docRoot}\..\resources\com\gymapp\views\list.fxml">list.fxml</a>.
+ */
 public class ListController implements Initializable {
     @FXML
     private TableColumn<GymMember , String> id;

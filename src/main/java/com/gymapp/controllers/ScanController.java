@@ -37,6 +37,9 @@ import java.net.URL;
 
 import com.github.sarxos.webcam.Webcam;
 
+/**
+ * Controller for {@code view} <a href ="{@docRoot}\..\resources\com\gymapp\views\scan.fxml">scan.fxml</a>.
+ */
 public class ScanController implements Initializable {
     @FXML
     private ImageView ivCameraOutput;

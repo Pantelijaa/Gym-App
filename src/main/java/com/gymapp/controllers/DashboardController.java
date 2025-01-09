@@ -19,6 +19,9 @@ import java.util.ResourceBundle;
 import java.net.URL;
 import java.sql.ResultSet;
 
+/**
+ * Controller for {@code view} <a href="{@docRoot}\..\resources\com\gymapp\views\dashboard.fxml">dashboard.fxml</a>.
+ */
 public class DashboardController implements Initializable {
     @FXML
     private PieChart returningPieChart;
