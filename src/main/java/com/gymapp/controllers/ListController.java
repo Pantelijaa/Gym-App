@@ -60,7 +60,7 @@ public class ListController implements Initializable {
         dbLink.getDBConnection();
         try {
             
-            ResultSet queryOutput = dbLink.querySearchDB(connectQuery);
+            ResultSet queryOutput = dbLink.querySearch(connectQuery);
 
             while (queryOutput.next()) {
                 int id = queryOutput.getInt("id");

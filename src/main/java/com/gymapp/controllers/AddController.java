@@ -94,11 +94,11 @@ public class AddController implements Initializable {
             gymMember.getLastName(),
             membershipID,
             this.getCurrentDate(),
-            this.extendMembership(gymMember.getMembershipType())
+            this.extendedMembership(gymMember.getMembershipType())
         );
 
         try {
-            dbLink.queryInsertDB(insertQuery);
+            dbLink.queryInsert(insertQuery);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -108,7 +108,7 @@ public class AddController implements Initializable {
         String searchQuery = "SELECT last_insert_rowid() FROM Members";
         int lastID = 0;
         try {
-            lastID = dbLink.querySearchDB(searchQuery).getInt(1);
+            lastID = dbLink.querySearch(searchQuery).getInt(1);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -135,7 +135,7 @@ public class AddController implements Initializable {
         int membershipID = 1;
         try {
             String searchQuery = String.format("SELECT id FROM Memberships WHERE type = '%s'", membership.toString());
-            membershipID = dbLink.querySearchDB(searchQuery).getInt(1);
+            membershipID = dbLink.querySearch(searchQuery).getInt(1);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -153,7 +153,7 @@ public class AddController implements Initializable {
         return date;
     }
 
-    private String extendMembership(MembershipType membership) {
+    private String extendedMembership(MembershipType membership) {
         String additionalTime;
         String date = null;
         Date expireDate;

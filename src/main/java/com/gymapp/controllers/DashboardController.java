@@ -52,8 +52,8 @@ public class DashboardController implements Initializable {
         String countInactiveQuery = "SELECT count() FROM Members WHERE expires_at < date('now', 'start of day', 'localtime')";
         String countActiveQuery = "SELECT count(), Memberships.type FROM Members RIGHT JOIN Memberships ON Members.membership_id = Memberships.id AND Members.expires_at >= date('now', 'start of day', 'localtime') GROUP BY Memberships.id";
         try {
-            int inactiveCount = dbLink.querySearchDB(countInactiveQuery).getInt(1);
-            ResultSet active = dbLink.querySearchDB(countActiveQuery);
+            int inactiveCount = dbLink.querySearch(countInactiveQuery).getInt(1);
+            ResultSet active = dbLink.querySearch(countActiveQuery);
 
             ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList( new PieChart.Data("Non-active", inactiveCount));
             while (active.next()) {
@@ -76,7 +76,7 @@ public class DashboardController implements Initializable {
     private void buildTodayCounter() {
         String searchQuery = "SELECT count() FROM Members WHERE recent_purchase = date('now')";
         try {
-            int today = dbLink.querySearchDB(searchQuery).getInt(1);
+            int today = dbLink.querySearch(searchQuery).getInt(1);
             todayCounter.setText(Integer.toString(today));
         } catch (Exception e) {
             e.printStackTrace();
@@ -87,7 +87,7 @@ public class DashboardController implements Initializable {
         String searchQuery = "SELECT count(), History.month FROM MembersHistory, History WHERE MembersHistory.history_id = History.id GROUP BY History.month";
         XYChart.Series<String, Integer> series = new XYChart.Series<>();
         try {
-            ResultSet queryOutput = dbLink.querySearchDB(searchQuery);
+            ResultSet queryOutput = dbLink.querySearch(searchQuery);
             while (queryOutput.next()) {
                 int numberOfMember = queryOutput.getInt(1);
                 String month = queryOutput.getString(2);

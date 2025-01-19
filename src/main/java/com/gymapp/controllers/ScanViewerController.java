@@ -71,7 +71,7 @@ public class ScanViewerController implements Initializable {
             dataSubstrings[1],
             dataSubstrings[2]
         );
-        ResultSet queryOutput = dbLink.querySearchDB(searchQuery);
+        ResultSet queryOutput = dbLink.querySearch(searchQuery);
         try {
             gymMember.setId(queryOutput.getInt("id"));
             gymMember.setFirstName(queryOutput.getString("first_name"));
@@ -120,7 +120,7 @@ public class ScanViewerController implements Initializable {
         int membershipId = 0;
         dbLink.getDBConnection();
         try {
-            membershipId = dbLink.querySearchDB(idSearchQuery).getInt(1);
+            membershipId = dbLink.querySearch(idSearchQuery).getInt(1);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -130,11 +130,7 @@ public class ScanViewerController implements Initializable {
             purchasedType.toDateModifier(),
             gymMember.getId()
         );
-        try {
-            dbLink.queryInsertDB(updateQuery);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        dbLink.queryInsert(updateQuery);
 
         dbLink.closeDBConnetion();
     }

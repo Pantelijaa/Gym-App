@@ -13,6 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ButtonBar;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
 
@@ -22,6 +23,7 @@ public class App extends Application {
 
     private static Scene scene;
     private static Stage window;
+    private static File database;
 
     private final static String checkValue = "jdfhasdgfg32867jhbs";
 
@@ -33,37 +35,12 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         window = stage;
-        scene = new Scene(loadFXML("dashboard"), 640, 480);
+        scene = new Scene(loadFXML("dbSelector"), 640, 480);
         window.setFullScreen(true);
         stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         window.setTitle("Gym app");
         window.setScene(scene);
         window.show();
-    }
-
-    public static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
-    public static void setRoot(Parent parent) throws IOException {
-        scene.setRoot(parent);
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("views/" + fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
-
-    public static Stage getWindow() {
-        return window;
-    }
-
-    public static Parent getRoot() {
-        return scene.getRoot();
-    }
-
-    public final static String getCheckValue() {
-        return checkValue;
     }
 
     /*
@@ -83,6 +60,11 @@ public class App extends Application {
         }
     }
 
+    private static Parent loadFXML(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("views/" + fxml + ".fxml"));
+        return fxmlLoader.load();
+    }
+
     public static void closeProgram() {
         Alert confirmDialog = new Alert(Alert.AlertType.CONFIRMATION);
         confirmDialog.setTitle("Exit Program");
@@ -97,4 +79,33 @@ public class App extends Application {
             System.exit(0); 
         }
     }
+
+    public static void setRoot(String fxml) throws IOException {
+        scene.setRoot(loadFXML(fxml));
+    }
+
+    public static void setRoot(Parent parent) throws IOException {
+        scene.setRoot(parent);
+    }
+
+    public static void setDatabase(File DB) {
+        database = DB;
+    }
+
+    public static Stage getWindow() {
+        return window;
+    }
+
+    public static Parent getRoot() {
+        return scene.getRoot();
+    }
+
+    public static File getDatabase() {
+        return database;
+    }
+
+    public final static String getCheckValue() {
+        return checkValue;
+    }
+
 }

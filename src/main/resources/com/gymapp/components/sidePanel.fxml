@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root id="side-panel" fx:id="sidePanel" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" minHeight="500.0" minWidth="50.0" prefWidth="60.0" styleClass="side-panel" type="VBox" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="side-panel" fx:id="sidePanel" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" minHeight="500.0" minWidth="50.0" prefWidth="60.0" styleClass="side-panel" type="VBox" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox fx:id="dashboardBtn" alignment="CENTER" onMouseClicked="#handleDashboard">
          <children>
@@ -82,6 +82,21 @@
             <Insets />
          </opaqueInsets>
       </Region>
+      <HBox fx:id="dbBtn" alignment="CENTER" onMouseClicked="#handleDB">
+         <children>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="side-panel-button">
+               <image>
+                  <Image url="@../images/database_off_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" />
+               </image>
+            </ImageView>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <padding>
+            <Insets bottom="5.0" top="5.0" />
+         </padding>
+      </HBox>
       <ImageView fx:id="exittBtn" fitHeight="50.0" fitWidth="50.0" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#handleExit" pickOnBounds="true" preserveRatio="true" styleClass="side-panel-button">
          <image>
             <Image url="@../images/exit_to_app_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" />

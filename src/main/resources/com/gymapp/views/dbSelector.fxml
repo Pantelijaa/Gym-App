@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gymapp.components.BottomBar?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="dbSelector" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gymapp.controllers.DBSelectorController">
+   <stylesheets>
+      <URL value="@../css/main.css" />
+      <URL value="@../css/dbselector.css" />
+   </stylesheets>
+   <bottom>
+      <BottomBar BorderPane.alignment="CENTER" />
+   </bottom>
+   <center>
+      <VBox id="db-selector-container" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#handleOpen" styleClass="selector-button" text="Open Existing Database...">
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#handleCreate" styleClass="selector-button" text="Create New Database...">
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#handleExit" styleClass="selector-button" text="Exit Program" />
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

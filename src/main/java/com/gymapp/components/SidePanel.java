@@ -57,6 +57,11 @@ public class SidePanel extends VBox {
         App.changeView("scan");
     }
 
+    public void handleDB() {
+        App.setDatabase(null);
+        App.changeView("dbSelector");
+    }
+
     public void handleExit() {
         App.closeProgram();
     }

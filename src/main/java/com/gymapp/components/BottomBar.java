@@ -15,6 +15,9 @@ import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+import java.io.File;
+
+import com.gymapp.App;
 
 /**
  * Controller for {@code component} <a href ="{@docRoot}\..\resources\com\gymapp\components\bottomBar.fxml">bottomBar.fxml</a>.
@@ -23,13 +26,14 @@ public class BottomBar extends HBox implements Initializable {
     @FXML
     private Label time;
     @FXML
+    private Label databaseInfo;
+    @FXML
     private HBox bottomBar;
 
     public BottomBar() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("bottomBar.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
-
         try {
             fxmlLoader.load();
         } catch (IOException exception) {
@@ -39,6 +43,11 @@ public class BottomBar extends HBox implements Initializable {
 
     @FXML
     public void initialize(URL url, ResourceBundle resources) {
+        initializeClock();
+        initializeDatabaseInfo();
+    }
+
+    private void initializeClock() {
         Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
             time.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss yyyy-MM-dd")));
         }),
@@ -48,4 +57,10 @@ public class BottomBar extends HBox implements Initializable {
         clock.playFromStart();
     }
     
+    private void initializeDatabaseInfo() {
+        File database = App.getDatabase();
+        if (database != null) {
+            databaseInfo.setText("Currently open: " + database.getName());
+        }
+    }
 }

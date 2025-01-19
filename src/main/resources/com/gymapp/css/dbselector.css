@@ -1,0 +1,15 @@
+#db-selector-container {
+    -fx-background-color: -fx-base-background-color;
+}
+
+#db-selector-container .selector-button {
+    -fx-background-color: -fx-menu-background-color;
+    -fx-text-fill: -fx-menu-foreground-color;
+    -fx-pref-width: 160px;
+    -fx-padding: 10px; 
+}
+
+#db-selector-container .selector-button:hover {
+    -fx-background-color: -fx-menu-active-background-color;
+    -fx-text-fill: -fx-menu-active-foreground-color;
+}

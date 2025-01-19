@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 
-<fx:root id="bottom-bar" fx:id="bottomBar" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" styleClass="bottom-bar" type="HBox" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="bottom-bar" fx:id="bottomBar" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" styleClass="bottom-bar" type="HBox" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label id="time" fx:id="time" alignment="CENTER" minWidth="200.0" prefHeight="37.0" prefWidth="200.0" styleClass="time" text="time" textFill="WHITE" HBox.hgrow="ALWAYS" />
+      <Label fx:id="databaseInfo" alignment="CENTER">
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+      </Label>
+      <Label id="time" fx:id="time" alignment="CENTER" minWidth="170.0" prefHeight="40.0" prefWidth="170.0" styleClass="time" text="time" textFill="WHITE" />
    </children>
    <stylesheets>
       <URL value="@../css/main.css" />
