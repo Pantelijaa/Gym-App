@@ -55,7 +55,9 @@ public class DBSelectorController {
         dbLink.getDBConnection();
         dbLink.assertValidity();
         dbLink.addCurrentMonthToHistory();
+        dbLink.addMemberships();
         dbLink.closeDBConnetion();
         App.changeView("dashboard");
     }
+
 }

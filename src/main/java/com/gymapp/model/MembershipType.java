@@ -34,5 +34,4 @@ public enum MembershipType {
                 .orElseThrow(() -> new IllegalArgumentException("Unknown value: " + s));
     }
 
-
 }

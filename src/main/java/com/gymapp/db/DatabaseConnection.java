@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import com.gymapp.App;
+import com.gymapp.model.MembershipType;
 
 /**
  * The {@code DatabaseConnection} class is used for communication with SQLite database.
@@ -128,6 +129,25 @@ public class DatabaseConnection {
         if (currentMonthExists()) return;
         final String insertQuery = "INSERT INTO History(month) VALUES(strftime('%Y-%m', 'now'))";
         queryInsert(insertQuery);
+    }
+
+    /**
+     * Creates database record for each membership type.
+     */
+    public void addMemberships() {
+        String searchQuery;
+        int presence;
+        for (MembershipType membership : MembershipType.values() ) {
+            searchQuery = String.format("SELECT COUNT(*) FROM Memberships WHERE type='%s'", membership);
+            try {
+                presence = querySearch(searchQuery).getInt(1);
+                if (presence == 0) {
+                    queryInsert(String.format("INSERT INTO Memberships(type) VALUES('%s')", membership));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
