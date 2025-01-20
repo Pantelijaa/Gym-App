@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 import com.gymapp.App;
 
@@ -16,7 +15,6 @@ import com.gymapp.App;
 public class DatabaseConnection {
 
     private Connection databaseLink;
-    private ResultSet resultSet;
 
     /**
      * Establishes {@code Connection} with SQLite database.
@@ -49,9 +47,11 @@ public class DatabaseConnection {
      * @param connectQuery  -   an {@code SQL} statement to be sent to the database,
      *                          typically a static SQL {@code SELECT} statement
      * @return                  {@linkplain java.sql.ResultSet ResultSet} object that contains 
-     *                          the data produced by the given query; never {@code null}
+     *                          the data produced by the given query; {@code null} if something went wrong while 
+     *                          executing query
      */
     public ResultSet querySearch(String connectQuery) {
+        ResultSet resultSet = null;
         try {
             Statement statement = databaseLink.createStatement();
             resultSet = statement.executeQuery(connectQuery);
@@ -68,14 +68,18 @@ public class DatabaseConnection {
      *                           such as {@code INSERT}, {@code UPDATE} or {@code DELETE};
      *                           or an SQL statement that returns nothing,
      *                           such as a DDL statement.
+     * @return                   either (1) the row count for SQL Data Manipulation Language (DML) statements 
+     *                           or (2) 0 for SQL statements that return nothing
      */
-    public void queryInsert(String connectQuery) {
+    public int queryInsert(String connectQuery) {
+        int success = 0;
         try {
             Statement statement = databaseLink.createStatement();
-            statement.executeUpdate(connectQuery);
+            success = statement.executeUpdate(connectQuery);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return success;
     }
 
     /**
@@ -83,12 +87,12 @@ public class DatabaseConnection {
      * If not creates missing tables.
      */
     public void assertValidity() {
-        String asertHistory = "CREATE TABLE IF NOT EXISTS \"History\" (" +
+        final String asertHistory = "CREATE TABLE IF NOT EXISTS \"History\" (" +
                               "\"id\"	INTEGER NOT NULL UNIQUE," +
-                              "\"month\"	TEXT NOT NULL," +
+                              "\"month\"	TEXT NOT NULL UNIQUE," +
                               "PRIMARY KEY(\"id\" AUTOINCREMENT)" +
                               ")";
-        String asertMembers = "CREATE TABLE IF NOT EXISTS \"Members\" (" +
+        final String asertMembers = "CREATE TABLE IF NOT EXISTS \"Members\" (" +
 	                          "\"id\"	INTEGER NOT NULL UNIQUE," +
 	                          "\"first_name\"	TEXT NOT NULL," +
 	                          "\"last_name\"	TEXT NOT NULL," +
@@ -98,7 +102,7 @@ public class DatabaseConnection {
                               "PRIMARY KEY(\"id\" AUTOINCREMENT)," +
                               "FOREIGN KEY(\"membership_id\") REFERENCES \"Memberships\"(\"id\")" +
                               ")";
-        String asertMembersHistory = "CREATE TABLE IF NOT EXISTS \"MembersHistory\" (" +
+        final String asertMembersHistory = "CREATE TABLE IF NOT EXISTS \"MembersHistory\" (" +
                                      "\"id\"	INTEGER NOT NULL UNIQUE," +
                                      "\"member_id\"	INTEGER NOT NULL," +
                                      "\"history_id\"	INTEGER NOT NULL," +
@@ -106,14 +110,43 @@ public class DatabaseConnection {
                                      "FOREIGN KEY(\"history_id\") REFERENCES \"History\"(\"id\")," +
                                      "FOREIGN KEY(\"member_id\") REFERENCES \"Members\"(\"id\")" +
                                      ")";                 
-        String asertMemberships = "CREATE TABLE IF NOT EXISTS \"Memberships\" (" +
+        final String asertMemberships = "CREATE TABLE IF NOT EXISTS \"Memberships\" (" +
                                   "\"id\"	INTEGER NOT NULL UNIQUE," +
                                   "\"type\"	TEXT NOT NULL," +
                                   "PRIMARY KEY(\"id\" AUTOINCREMENT)" +
                                   ")";
-        String[] asserList = {asertHistory, asertMembers, asertMembersHistory, asertMemberships};
+        final String[] asserList = {asertHistory, asertMembers, asertMemberships, asertMembersHistory};
         for (String assertQuery : asserList) {
             queryInsert(assertQuery);
         }
     }
+
+    /**
+     * Creates database record for current month. Format used is YYYY-MM.
+     */
+    public void addCurrentMonthToHistory() {
+        if (currentMonthExists()) return;
+        final String insertQuery = "INSERT INTO History(month) VALUES(strftime('%Y-%m', 'now'))";
+        queryInsert(insertQuery);
+    }
+
+    /**
+     * Checks if current month is already in database. Format used is YYYY-MM.
+     * 
+     * @return {@code true} if month exists, {@code false} if it doesn't
+     */
+    private Boolean currentMonthExists() {
+        int presence = 0;
+        final String searchQuery = "SELECT COUNT(*) FROM History where month=(strftime('%Y-%m', 'now'))";
+        try {
+            presence = querySearch(searchQuery).getInt(1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (presence >= 1 ) {
+            return true;
+        }
+        return false;
+    } 
+
 }

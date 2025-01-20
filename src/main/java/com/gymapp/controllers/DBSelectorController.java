@@ -28,7 +28,6 @@ public class DBSelectorController {
         if (file != null && file.getAbsolutePath().endsWith(".db")) {
             openDatabase(file);
         }
-
     }
 
     public void handleExit() {
@@ -55,6 +54,7 @@ public class DBSelectorController {
         DatabaseConnection dbLink = new DatabaseConnection();
         dbLink.getDBConnection();
         dbLink.assertValidity();
+        dbLink.addCurrentMonthToHistory();
         dbLink.closeDBConnetion();
         App.changeView("dashboard");
     }
