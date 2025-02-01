@@ -1,6 +1,7 @@
 package com.gymapp;
 
 import com.gymapp.components.SidePanel;
+import com.gymapp.enums.FxmlViewEnum;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -36,7 +37,7 @@ public class App extends Application {
         window.setFullScreen(true);
         window.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         window.setTitle("Gym app");
-        scene = new Scene(loadFXML("dbSelector"));
+        scene = new Scene(loadFXML(FxmlViewEnum.DBSELECTOR));
         window.setScene(scene);
         window.show();
     }
@@ -44,22 +45,22 @@ public class App extends Application {
     /*
      * Only for UI purpose
      */
-    public static void setActiveTab(SidePanel sidePanel, int index) {
-        sidePanel.getChildren().get(index).getStyleClass().add("sidepanel-active");
+    public static void setActiveTab(SidePanel sidePanel, FxmlViewEnum fxmlViewEnum) {
+        sidePanel.getChildren().get(fxmlViewEnum.getSidePanelIndex()).getStyleClass().add("sidepanel-active");
     }    
     
-    public static void changeView(String view) {
-        if(!App.getRoot().getId().equals(view)) {
+    public static void changeView(FxmlViewEnum fxmlViewEnum) {
+        if(!App.getRoot().getId().equals(fxmlViewEnum.name().toLowerCase())) {
             try {
-                App.setRoot(view);
+                App.setRoot(fxmlViewEnum);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("views/" + fxml + ".fxml"));
+    private static Parent loadFXML(FxmlViewEnum fxmlViewEnum) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxmlViewEnum.getFxmlFile()));
         return fxmlLoader.load();
     }
 
@@ -78,8 +79,8 @@ public class App extends Application {
         }
     }
 
-    public static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+    public static void setRoot(FxmlViewEnum fxmlViewEnum) throws IOException {
+        scene.setRoot(loadFXML(fxmlViewEnum));
     }
 
     public static void setRoot(Parent parent) throws IOException {

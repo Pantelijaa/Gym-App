@@ -2,6 +2,7 @@ package com.gymapp.controllers;
 
 import com.gymapp.App;
 import com.gymapp.components.SidePanel;
+import com.gymapp.enums.FxmlViewEnum;
 import com.gymapp.service.QRService;
 
 import javafx.application.Platform;
@@ -59,7 +60,7 @@ public class ScanController implements Initializable {
 
     @FXML
     public void initialize(URL url, ResourceBundle resources) {
-        App.setActiveTab(sidePanel, 3);
+        App.setActiveTab(sidePanel, FxmlViewEnum.SCAN);
         sidePanelOnClickDestroysStream();
         startCameraInput();
     }

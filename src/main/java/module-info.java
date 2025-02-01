@@ -30,4 +30,6 @@ module com.gymapp {
     opens com.gymapp.converters to org.hibernate.orm.core;
     exports com.gymapp.converters;
 
+    exports com.gymapp.enums;
+
 }

@@ -1,0 +1,84 @@
+package com.gymapp.enums;
+
+import java.util.ResourceBundle;
+
+public enum FxmlViewEnum {
+    
+    DBSELECTOR {
+        @Override
+        public String getFxmlFile() {
+            return "views/dbSelector.fxml";
+        }
+
+        public int getSidePanelIndex() {
+            return -1;
+        }
+    }, DASHBOARD {
+        @Override
+        public String getFxmlFile() {
+            return "views/dashboard.fxml";
+        }
+
+        @Override
+        public int getSidePanelIndex() {
+            return 0;
+        }
+    }, LIST {
+        @Override
+        public String getFxmlFile() {
+            return "views/list.fxml";
+        }
+        
+        @Override
+        public int getSidePanelIndex() {
+            return 1;
+        }
+    }, ADD {
+        @Override
+        public String getFxmlFile() {
+            return "views/add.fxml";
+        }
+
+        @Override
+        public int getSidePanelIndex() {
+            return 2;
+        }
+    }, SCAN {
+        @Override
+        public String getFxmlFile() {
+            return "views/scan.fxml";
+        }
+
+        @Override
+        public int getSidePanelIndex() {
+            return 3;
+        }
+    }, SCANVIEWER {
+        @Override
+        public String getFxmlFile() {
+            return "views/scanViewer.fxml";
+        }
+
+        @Override
+        public int getSidePanelIndex() {
+            return 3;
+        }
+    }, MEMBERSHIP {
+        @Override
+        public String getFxmlFile() {
+            return "views/membership.fxml";
+        }
+
+        @Override
+        public int getSidePanelIndex() {
+            return 4;
+        }
+    };
+
+    abstract public int getSidePanelIndex();
+    abstract public String getFxmlFile();
+
+    String getStringFromResourceBundle(String key) {
+        return ResourceBundle.getBundle("Bundle").getString(key);
+    }
+}

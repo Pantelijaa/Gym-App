@@ -1,6 +1,7 @@
 package com.gymapp.controllers;
 
 import com.gymapp.App;
+import com.gymapp.enums.FxmlViewEnum;
 import com.gymapp.helpers.PropertiesHelper;
 import com.gymapp.service.HistoryService;
 
@@ -62,7 +63,7 @@ public class DBSelectorController {
         hs = new HistoryService();
         hs.addCurrentMonth();
 
-        App.changeView("dashboard");
+        App.changeView(FxmlViewEnum.DASHBOARD);
     }
 
 }

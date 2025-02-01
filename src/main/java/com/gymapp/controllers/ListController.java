@@ -3,6 +3,7 @@ package com.gymapp.controllers;
 import com.gymapp.App;
 import com.gymapp.components.SidePanel;
 import com.gymapp.entity.GymMember;
+import com.gymapp.enums.FxmlViewEnum;
 import com.gymapp.service.GymMemberService;
 
 import javafx.fxml.FXML;
@@ -43,7 +44,7 @@ public class ListController implements Initializable {
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
-        App.setActiveTab(sidePanel, 1);
+        App.setActiveTab(sidePanel, FxmlViewEnum.LIST);
         id.setCellValueFactory(new PropertyValueFactory<GymMember, String>("id"));
         firstName.setCellValueFactory(new PropertyValueFactory<GymMember, String>("lastName"));
         lastName.setCellValueFactory(new PropertyValueFactory<GymMember, String>("firstName"));

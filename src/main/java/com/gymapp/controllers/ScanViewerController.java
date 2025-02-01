@@ -3,6 +3,7 @@ package com.gymapp.controllers;
 import com.gymapp.App;
 import com.gymapp.components.SidePanel;
 import com.gymapp.entity.GymMember;
+import com.gymapp.enums.FxmlViewEnum;
 import com.gymapp.service.GymMemberService;
 import com.gymapp.service.MembershipService;
 
@@ -52,7 +53,7 @@ public class ScanViewerController implements Initializable {
 
     @FXML
     public void initialize(URL url, ResourceBundle resources) {
-        App.setActiveTab(sidePanel, 3);
+        App.setActiveTab(sidePanel, FxmlViewEnum.SCANVIEWER);
         List<String> membershipTypes = ms.getAllTypes();
         chooseMembership.getItems().setAll(membershipTypes);
         chooseMembership.setValue(membershipTypes.get(0));
@@ -69,7 +70,7 @@ public class ScanViewerController implements Initializable {
 
     public void handleExtendButton() {
         gms.extendMembership(member.getId(), ms.getByType(chooseMembership.getValue()));
-        App.changeView("list");
+        App.changeView(FxmlViewEnum.LIST);
     }
 
     private void loadQrImage() {

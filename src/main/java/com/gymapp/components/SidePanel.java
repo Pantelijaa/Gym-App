@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import com.gymapp.App;
+import com.gymapp.enums.FxmlViewEnum;
 import com.gymapp.helpers.PropertiesHelper;
 
 /**
@@ -44,19 +45,19 @@ public class SidePanel extends VBox {
     }
 
     public void handleDashboard() {
-        App.changeView("dashboard"); 
+        App.changeView(FxmlViewEnum.DASHBOARD); 
     }
 
     public void handleList() {
-        App.changeView("list");
+        App.changeView(FxmlViewEnum.LIST);
     }
 
     public void handleAdd() {
-        App.changeView("add");
+        App.changeView(FxmlViewEnum.ADD);
     }
 
     public void handleScan() {
-        App.changeView("scan");
+        App.changeView(FxmlViewEnum.SCAN);
     }
 
     public void handleDB() {
@@ -64,7 +65,7 @@ public class SidePanel extends VBox {
         PropertiesHelper.loadPropertiesFromFile(prop, App.CONFIG_FILE);
         PropertiesHelper.deleteDBPath(prop, App.CONFIG_FILE);
 
-        App.changeView("dbSelector");
+        App.changeView(FxmlViewEnum.DBSELECTOR);
     }
 
     public void handleExit() {

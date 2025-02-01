@@ -3,6 +3,7 @@ package com.gymapp.controllers;
 import com.gymapp.App;
 import com.gymapp.components.SidePanel;
 import com.gymapp.entity.Membership;
+import com.gymapp.enums.FxmlViewEnum;
 import com.gymapp.service.GymMemberService;
 import com.gymapp.service.MembershipService;
 import com.gymapp.service.QRService;
@@ -47,7 +48,7 @@ public class AddController implements Initializable {
 
     @FXML
     public void initialize(URL url, ResourceBundle resources) {
-        App.setActiveTab(sidePanel, 2);
+        App.setActiveTab(sidePanel, FxmlViewEnum.ADD);
         List<String> membershipTypes = ms.getAllTypes();
         chooseMembership.getItems().setAll(membershipTypes);
         try {
