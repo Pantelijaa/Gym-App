@@ -15,7 +15,7 @@
 
 ## About The Project
 
-Application for tracking gym members. Codebase is separated in multiple layers to ensure proper data flow: **`Database` <-> `Entity` <-> `Dao` <-> `Service` <-> `Controller`**.
+Application for tracking subscriptions. Codebase is separated in multiple layers to ensure proper data flow: **`Database` <-> `Entity` <-> `Dao` <-> `Service` <-> `Controller`**.
 
 ### Built With
 * [![Java][Java-badge]][Java-url]
