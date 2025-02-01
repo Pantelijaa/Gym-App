@@ -32,24 +32,24 @@ public class GymMemberService {
     }
 
     public int getMembersCount() {
-        return getAllMembers().size();
+        return this.getAllMembers().size();
     }
 
     public int getTodayMembersCount() {
-        FilteredList<GymMember> todayList = new FilteredList<>(getAllMembers(), m -> m.getRecentPurchase() == LocalDate.now());
+        FilteredList<GymMember> todayList = new FilteredList<>(this.getAllMembers(), m -> m.getRecentPurchase() == LocalDate.now());
         
         return todayList.size();
     }
 
     public int getInactiveMembersCount() {
-        FilteredList<GymMember> inactiveList = new FilteredList<>(getAllMembers(), m -> m.getExpiresAt().compareTo(LocalDate.now()) < 0);
+        FilteredList<GymMember> inactiveList = new FilteredList<>(this.getAllMembers(), m -> m.getExpiresAt().compareTo(LocalDate.now()) < 0);
 
         return inactiveList.size();
     }
 
     public HashMap<String, Integer> getActiveMembersCount() {
         HashMap<String, Integer> hm = new HashMap<>();
-        FilteredList<GymMember> activeList = new FilteredList<>(getAllMembers(), m -> m.getExpiresAt().compareTo(LocalDate.now()) >= 0);
+        FilteredList<GymMember> activeList = new FilteredList<>(this.getAllMembers(), m -> m.getExpiresAt().compareTo(LocalDate.now()) >= 0);
 
         activeList.forEach(m -> {
            String key = m.getMembership().getType();
@@ -70,7 +70,7 @@ public class GymMemberService {
                                             membership,
                                             LocalDate.now(),
                                             LocalDate.now().plus(membership.getDuration()));
-       addCurentMonthToHystory(newMember); 
+        this.addCurentMonthToMemberHystory(newMember); 
         try {
             memberId = gmdi.findLastInsertedId();
             gmdi.create(newMember);
@@ -88,12 +88,12 @@ public class GymMemberService {
         member.setMembership(newMembership);
         member.setRecentPurchase(LocalDate.now());
         member.setExpiresAt(member.getExpiresAt().plus(newMembership.getDuration()));
-       addCurentMonthToHystory(member); 
+        this.addCurentMonthToMemberHystory(member); 
 
         gmdi.update(member);
     }
 
-    private void addCurentMonthToHystory(GymMember member) {
+    private void addCurentMonthToMemberHystory(GymMember member) {
         HistoryService his = new HistoryService();
         Set<History> history = new HashSet<>();
         history.add(his.getCurrentMonth());

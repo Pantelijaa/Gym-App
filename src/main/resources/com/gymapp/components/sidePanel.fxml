@@ -62,6 +62,21 @@
             <Insets bottom="5.0" top="5.0" />
          </padding>
       </HBox>
+      <HBox fx:id="membershipBtn" alignment="CENTER" onMouseClicked="#handleMembership">
+         <children>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="side-panel-button">
+               <image>
+                  <Image url="@../images/card_membership_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" />
+               </image>
+            </ImageView>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <padding>
+            <Insets bottom="5.0" top="5.0" />
+         </padding>
+      </HBox>
       <HBox fx:id="scanBtn" alignment="CENTER" onMouseClicked="#handleScan">
          <children>
             <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="side-panel-button">

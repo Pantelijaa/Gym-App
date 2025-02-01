@@ -60,7 +60,7 @@ public class ScanController implements Initializable {
 
     @FXML
     public void initialize(URL url, ResourceBundle resources) {
-        App.setActiveTab(sidePanel, FxmlViewEnum.SCAN);
+        sidePanel.setActiveTab(FxmlViewEnum.SCAN);
         sidePanelOnClickDestroysStream();
         startCameraInput();
     }

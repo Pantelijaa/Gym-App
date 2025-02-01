@@ -1,6 +1,5 @@
 package com.gymapp.controllers;
 
-import com.gymapp.App;
 import com.gymapp.components.SidePanel;
 import com.gymapp.enums.FxmlViewEnum;
 import com.gymapp.service.GymMemberService;
@@ -45,7 +44,7 @@ public class DashboardController implements Initializable {
 
     @FXML
     public void initialize(URL url, ResourceBundle resources) {
-        App.setActiveTab(sidePanel, FxmlViewEnum.DASHBOARD);
+        sidePanel.setActiveTab(FxmlViewEnum.DASHBOARD);
         this.buildPieChart(); 
         this.buildTodayCounter();
         this.buildLineChart();

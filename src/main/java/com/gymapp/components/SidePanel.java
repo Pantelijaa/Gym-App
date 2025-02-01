@@ -2,7 +2,6 @@ package com.gymapp.components;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -22,14 +21,6 @@ import com.gymapp.helpers.PropertiesHelper;
  */
 public class SidePanel extends VBox {
     @FXML
-    private HBox dashboardBtn;
-    @FXML
-    private HBox listBtn;
-    @FXML
-    private HBox addBtn;
-    @FXML
-    private HBox scanBtn;
-    @FXML
     private VBox sidePanel;
 
     public SidePanel() {
@@ -44,6 +35,10 @@ public class SidePanel extends VBox {
         }
     }
 
+    public void setActiveTab(FxmlViewEnum fxmlViewEnum) {
+        sidePanel.getChildren().get(fxmlViewEnum.getSidePanelIndex()).getStyleClass().add("sidepanel-active");
+    }    
+
     public void handleDashboard() {
         App.changeView(FxmlViewEnum.DASHBOARD); 
     }
@@ -54,6 +49,10 @@ public class SidePanel extends VBox {
 
     public void handleAdd() {
         App.changeView(FxmlViewEnum.ADD);
+    }
+
+    public void handleMembership() {
+        App.changeView(FxmlViewEnum.MEMBERSHIP);
     }
 
     public void handleScan() {

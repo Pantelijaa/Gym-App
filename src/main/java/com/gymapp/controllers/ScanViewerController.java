@@ -53,7 +53,7 @@ public class ScanViewerController implements Initializable {
 
     @FXML
     public void initialize(URL url, ResourceBundle resources) {
-        App.setActiveTab(sidePanel, FxmlViewEnum.SCANVIEWER);
+        sidePanel.setActiveTab(FxmlViewEnum.SCANVIEWER);
         List<String> membershipTypes = ms.getAllTypes();
         chooseMembership.getItems().setAll(membershipTypes);
         chooseMembership.setValue(membershipTypes.get(0));

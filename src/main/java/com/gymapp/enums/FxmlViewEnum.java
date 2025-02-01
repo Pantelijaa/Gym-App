@@ -1,7 +1,5 @@
 package com.gymapp.enums;
 
-import java.util.ResourceBundle;
-
 public enum FxmlViewEnum {
     
     DBSELECTOR {
@@ -51,7 +49,7 @@ public enum FxmlViewEnum {
 
         @Override
         public int getSidePanelIndex() {
-            return 3;
+            return 4;
         }
     }, SCANVIEWER {
         @Override
@@ -61,7 +59,7 @@ public enum FxmlViewEnum {
 
         @Override
         public int getSidePanelIndex() {
-            return 3;
+            return 4;
         }
     }, MEMBERSHIP {
         @Override
@@ -71,14 +69,11 @@ public enum FxmlViewEnum {
 
         @Override
         public int getSidePanelIndex() {
-            return 4;
+            return 3;
         }
     };
 
     abstract public int getSidePanelIndex();
     abstract public String getFxmlFile();
 
-    String getStringFromResourceBundle(String key) {
-        return ResourceBundle.getBundle("Bundle").getString(key);
-    }
 }

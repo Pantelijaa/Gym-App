@@ -3,14 +3,17 @@
 <?import com.gymapp.components.BottomBar?>
 <?import com.gymapp.components.SidePanel?>
 <?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<BorderPane fx:id="membership" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="membership" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gymapp.controllers.MembershipController">
    <left>
       <SidePanel fx:id="sidePanel" BorderPane.alignment="CENTER" />
    </left>
@@ -24,12 +27,25 @@
    <center>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="200.0" prefWidth="100.0" />
-            <TableView prefHeight="200.0" prefWidth="200.0">
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Add Membership" />
+                  <Label text="Name:" />
+                  <TextField fx:id="nameTextField" />
+                  <Label text="Duration" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ChoiceBox fx:id="durationChoiceBox" prefWidth="150.0" />
+                        <ChoiceBox fx:id="durationTypeChoiceBox" prefWidth="150.0" />
+                     </children>
+                  </HBox>
+                  <Button fx:id="addBtn" mnemonicParsing="false" onAction="#handleAddBtn" text="Add" />
+               </children></VBox>
+            <TableView fx:id="membershipsTableView" prefHeight="200.0" prefWidth="200.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="ID" />
-                <TableColumn prefWidth="75.0" text="Type" />
-                  <TableColumn prefWidth="75.0" text="Duration" />
+                <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
+                  <TableColumn fx:id="durationColumn" prefWidth="75.0" text="Duration" />
               </columns>
             </TableView>
          </children>

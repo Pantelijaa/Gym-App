@@ -48,7 +48,7 @@ public class AddController implements Initializable {
 
     @FXML
     public void initialize(URL url, ResourceBundle resources) {
-        App.setActiveTab(sidePanel, FxmlViewEnum.ADD);
+        sidePanel.setActiveTab(FxmlViewEnum.ADD);
         List<String> membershipTypes = ms.getAllTypes();
         chooseMembership.getItems().setAll(membershipTypes);
         try {
@@ -61,8 +61,11 @@ public class AddController implements Initializable {
     public void handleAddBtn() {
         String firstName = firstNameTextField.getText();
         String lastName = lastNameTextField.getText();
-        Membership membership = ms.getByType(chooseMembership.getValue());
+        String data = null;
 
+        if (firstName.equals("") || lastName.equals("")) return;
+
+        Membership membership = ms.getByType(chooseMembership.getValue());
         int id = gms.registerNewMember(firstName, lastName, membership);
 
         /*
@@ -70,24 +73,22 @@ public class AddController implements Initializable {
         * Cuz small ones are hard to read
         * And adds additional possibility for security check
         */
-        String data = String.format("%d %s %s %s",
-                                    id,
-                                    firstName,
-                                    lastName,
-                                    App.CHECK_VALUE);
+        data = String.format("%d %s %s %s",
+                            id,
+                            firstName,
+                            lastName,
+                            App.CHECK_VALUE);
         this.generateQR(data);
 
-        // Reset UI components to default
-        firstNameTextField.clear();
-        lastNameTextField.clear();
-        chooseMembership.setValue(ms.getAllTypes().get(0));
+        this.resetUI();
     }
+
 
     private void generateQR(String data) {
         String path = "src/main/resources/com/gymapp/QR/" + data + ".png";
         String charset = "UTF-8";
         Map<EncodeHintType, ErrorCorrectionLevel> hashMap = new HashMap<>();
-        hashMap.put(EncodeHintType.ERROR_CORRECTION,ErrorCorrectionLevel.L);
+        hashMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
         int height = 1000;
         int width = 1000;
         try {
@@ -97,5 +98,11 @@ public class AddController implements Initializable {
         } catch (WriterException e) {
             e.printStackTrace();
         }
+    }
+
+    private void resetUI() {
+        firstNameTextField.clear();
+        lastNameTextField.clear();
+        chooseMembership.setValue(ms.getAllTypes().get(0));
     }
 }

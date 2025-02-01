@@ -35,8 +35,7 @@ public class Membership {
 
     public Membership() {};
 
-    public Membership(int id, String type, Period duration) {
-        this.id = id;
+    public Membership(String type, Period duration) {
         this.type = type;
         this.duration = duration;
     }
