@@ -1,6 +1,5 @@
 package com.gymapp;
 
-import com.gymapp.components.SidePanel;
 import com.gymapp.enums.FxmlViewEnum;
 
 import javafx.application.Application;
@@ -41,13 +40,6 @@ public class App extends Application {
         window.setScene(scene);
         window.show();
     }
-
-    /*
-     * Only for UI purpose
-     */
-    public static void setActiveTab(SidePanel sidePanel, FxmlViewEnum fxmlViewEnum) {
-        sidePanel.getChildren().get(fxmlViewEnum.getSidePanelIndex()).getStyleClass().add("sidepanel-active");
-    }    
     
     public static void changeView(FxmlViewEnum fxmlViewEnum) {
         if(!App.getRoot().getId().equals(fxmlViewEnum.name().toLowerCase())) {
