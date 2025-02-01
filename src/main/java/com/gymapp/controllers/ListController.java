@@ -45,8 +45,8 @@ public class ListController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         sidePanel.setActiveTab(FxmlViewEnum.LIST);
         id.setCellValueFactory(new PropertyValueFactory<GymMember, String>("id"));
-        firstName.setCellValueFactory(new PropertyValueFactory<GymMember, String>("lastName"));
-        lastName.setCellValueFactory(new PropertyValueFactory<GymMember, String>("firstName"));
+        firstName.setCellValueFactory(new PropertyValueFactory<GymMember, String>("firstName"));
+        lastName.setCellValueFactory(new PropertyValueFactory<GymMember, String>("lastName"));
         membershipType.setCellValueFactory(new PropertyValueFactory<GymMember, String>("membershipType"));
         recentPurchase.setCellValueFactory(new PropertyValueFactory<GymMember, String>("recentPurchase"));
         expiresAt.setCellValueFactory(new PropertyValueFactory<GymMember, String>("expiresAt"));
