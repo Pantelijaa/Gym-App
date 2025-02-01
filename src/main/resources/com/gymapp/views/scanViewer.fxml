@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="scanViewer" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gymapp.controllers.ScanViewerController">
+<BorderPane fx:id="scanViewer" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.gymapp.controllers.ScanViewerController">
    <left>
       <SidePanel fx:id="sidePanel" BorderPane.alignment="CENTER" />
    </left>

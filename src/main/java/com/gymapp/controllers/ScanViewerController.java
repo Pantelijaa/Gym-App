@@ -2,9 +2,9 @@ package com.gymapp.controllers;
 
 import com.gymapp.App;
 import com.gymapp.components.SidePanel;
-import com.gymapp.db.DatabaseConnection;
-import com.gymapp.model.GymMember;
-import com.gymapp.model.MembershipType;
+import com.gymapp.entity.GymMember;
+import com.gymapp.service.GymMemberService;
+import com.gymapp.service.MembershipService;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,7 +15,7 @@ import javafx.scene.control.ChoiceBox;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.sql.ResultSet;
+import java.util.List;
 
 /**
  * Controller for {@code view} <a href ="{@docRoot}\..\resources\com\gymapp\views\scanViewer.fxml">scanViewer.fxml</a>.
@@ -36,108 +36,55 @@ public class ScanViewerController implements Initializable {
     @FXML
     private ImageView ivQr;
     @FXML
-    private ChoiceBox<MembershipType> chooseMembership;
+    private ChoiceBox<String> chooseMembership;
     @FXML
     private SidePanel sidePanel;
 
-    private String data;
-    private GymMember gymMember;
-    private DatabaseConnection dbLink;
+    GymMemberService gms;
+    MembershipService ms;
+    GymMember member;
 
-    public ScanViewerController(String data) {
-        this.data = data;
-        this.gymMember = new GymMember();
-        this.dbLink = new DatabaseConnection();
+    public ScanViewerController(int resultId) {
+        this.gms = new GymMemberService();
+        this.ms = new MembershipService();
+        this.member = gms.getById(resultId);
     }
 
     @FXML
     public void initialize(URL url, ResourceBundle resources) {
         App.setActiveTab(sidePanel, 3);
-        chooseMembership.getItems().setAll(MembershipType.values());
-        chooseMembership.setValue(MembershipType.ONE_MONTH);
-        //data is forced to always have same format by AddController
-        String[] dataSubstrings = data.split(" ");
-        String searchQuery = null;
+        List<String> membershipTypes = ms.getAllTypes();
+        chooseMembership.getItems().setAll(membershipTypes);
+        chooseMembership.setValue(membershipTypes.get(0));
 
-        if (dataSubstrings.length != 4 || !ValidateQR(dataSubstrings[3])) {
-            System.out.println("Illegal QRcode");
-            App.changeView("list");
-            return;
-        }
+        labelID.setText(String.valueOf(member.getId()));
+        labelFirstName.setText(member.getFirstName());
+        labelLastName.setText(member.getLastName());
+        labelMembership.setText(member.getMembershipType());
+        labelPurchase.setText(member.getRecentPurchase().toString());
+        labelExpire.setText(member.getExpiresAt().toString());
 
-        dbLink.getDBConnection();
-        searchQuery = String.format("SELECT Members.id, Members.first_name, Members.last_name, Members.recent_purchase, Members.expires_at, Memberships.type FROM Members, Memberships WHERE Members.id = %s AND Members.first_name='%s' AND Members.last_name='%s' AND Memberships.id = Members.membership_id",
-            dataSubstrings[0],
-            dataSubstrings[1],
-            dataSubstrings[2]
-        );
-        ResultSet queryOutput = dbLink.querySearch(searchQuery);
-        try {
-            gymMember.setId(queryOutput.getInt("id"));
-            gymMember.setFirstName(queryOutput.getString("first_name"));
-            gymMember.setLastName(queryOutput.getString("last_name"));
-            gymMember.setRecentPurchase(queryOutput.getString("recent_purchase"));
-            gymMember.setMembershipType(MembershipType.fromString(queryOutput.getString("type")));
-            gymMember.setExpiresAt(queryOutput.getString("expires_at"));
+        loadQrImage(); 
+    }
 
-            labelID.setText(String.valueOf(gymMember.getId()));
-            labelFirstName.setText(gymMember.getFirstName());
-            labelLastName.setText(gymMember.getLastName());
-            labelMembership.setText(gymMember.getMembershipType().toString());
-            labelPurchase.setText(gymMember.getRecentPurchase());
-            labelExpire.setText(gymMember.getExpiresAt());
+    public void handleExtendButton() {
+        gms.extendMembership(member.getId(), ms.getByType(chooseMembership.getValue()));
+        App.changeView("list");
+    }
 
-            Image image = new Image(String.format("file:src/main/resources/com/gymapp/QR/%s %s %s %s.png",
-                gymMember.getId(),
-                gymMember.getFirstName(),
-                gymMember.getLastName(),
-                App.getCheckValue()
+    private void loadQrImage() {
+        Image image = new Image(String.format("file:src/main/resources/com/gymapp/QR/%s %s %s %s.png",
+                member.getId(),
+                member.getFirstName(),
+                member.getLastName(),
+                App.CHECK_VALUE
                 ), 
                 150,
                 150,
                 true, 
                 true
             );
-            ivQr.setImage(image);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        dbLink.closeDBConnetion();
+        ivQr.setImage(image);
     }
 
-    private Boolean ValidateQR(String checkValue) {
-        if (checkValue.equals(App.getCheckValue())) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private void extendMembership(MembershipType purchasedType) {
-        String idSearchQuery = String.format("SELECT id FROM Memberships WHERE type == '%s'", purchasedType.toString());
-        int membershipId = 0;
-        dbLink.getDBConnection();
-        try {
-            membershipId = dbLink.querySearch(idSearchQuery).getInt(1);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        String updateQuery = String.format("UPDATE Members SET membership_id = %d, recent_purchase = date('now'), expires_at = date(expires_at, '+%s') WHERE id = %d",
-            membershipId,
-            purchasedType.toDateModifier(),
-            gymMember.getId()
-        );
-        dbLink.queryInsert(updateQuery);
-
-        dbLink.closeDBConnetion();
-    }
-
-    public void handleExtendButton() {
-        MembershipType purchasedType = chooseMembership.getValue();
-        extendMembership(purchasedType);
-        App.changeView("list");
-    }
 }

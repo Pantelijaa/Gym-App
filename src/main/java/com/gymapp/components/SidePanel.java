@@ -6,8 +6,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.util.Properties;
 
 import com.gymapp.App;
+import com.gymapp.helpers.PropertiesHelper;
 
 /**
  * Controller for {@code component} <a href ="{@docRoot}\..\resources\com\gymapp\components\sidePanel.fxml">sidePanel.fxml</a>.
@@ -58,7 +60,10 @@ public class SidePanel extends VBox {
     }
 
     public void handleDB() {
-        App.setDatabase(null);
+        Properties prop = new Properties();
+        PropertiesHelper.loadPropertiesFromFile(prop, App.CONFIG_FILE);
+        PropertiesHelper.deleteDBPath(prop, App.CONFIG_FILE);
+
         App.changeView("dbSelector");
     }
 

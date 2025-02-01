@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gymapp.components.BottomBar?>
+<?import com.gymapp.components.SidePanel?>
+<?import java.lang.String?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<BorderPane fx:id="membership" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <SidePanel fx:id="sidePanel" BorderPane.alignment="CENTER" />
+   </left>
+   <bottom>
+      <BottomBar fx:id="bottomBar" BorderPane.alignment="CENTER" />
+   </bottom>
+   <styleClass>
+      <String fx:value="..\css\main.css" />
+      <String fx:value="..\css\membership.css" />
+   </styleClass>
+   <center>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0" />
+            <TableView prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="ID" />
+                <TableColumn prefWidth="75.0" text="Type" />
+                  <TableColumn prefWidth="75.0" text="Duration" />
+              </columns>
+            </TableView>
+         </children>
+      </HBox>
+   </center>
+</BorderPane>

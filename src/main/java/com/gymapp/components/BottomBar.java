@@ -14,10 +14,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Properties;
 import java.util.ResourceBundle;
-import java.io.File;
 
 import com.gymapp.App;
+import com.gymapp.helpers.PropertiesHelper;
 
 /**
  * Controller for {@code component} <a href ="{@docRoot}\..\resources\com\gymapp\components\bottomBar.fxml">bottomBar.fxml</a>.
@@ -57,10 +58,14 @@ public class BottomBar extends HBox implements Initializable {
         clock.playFromStart();
     }
     
-    private void initializeDatabaseInfo() {
-        File database = App.getDatabase();
-        if (database != null) {
-            databaseInfo.setText("Currently open: " + database.getName());
+    private void initializeDatabaseInfo() throws IllegalStateException {
+        Properties prop = new Properties();
+        PropertiesHelper.loadPropertiesFromFile(prop, App.CONFIG_FILE);
+        String dbPath = prop.getProperty("db.path");
+
+        /*Scene is null only on initial boot of application */
+        if (App.getWindow().getScene() != null && !dbPath.equals("")) {
+                databaseInfo.setText("Currently open: " + dbPath.substring(dbPath.lastIndexOf('\\') + 1).trim());
         }
     }
 }

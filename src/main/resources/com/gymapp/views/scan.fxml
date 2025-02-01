@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane fx:id="scan" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gymapp.controllers.ScanController">
+<BorderPane fx:id="scan" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.gymapp.controllers.ScanController">
    <left>
       <SidePanel fx:id="sidePanel" BorderPane.alignment="CENTER" />
    </left>

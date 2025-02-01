@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane id="dashboard" fx:id="dashboard" minHeight="800.0" minWidth="920.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gymapp.controllers.DashboardController">
+<BorderPane id="dashboard" fx:id="dashboard" minHeight="800.0" minWidth="920.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.gymapp.controllers.DashboardController">
    <left>
       <SidePanel fx:id="sidePanel" BorderPane.alignment="CENTER" />
    </left>

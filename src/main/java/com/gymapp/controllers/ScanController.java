@@ -2,7 +2,7 @@ package com.gymapp.controllers;
 
 import com.gymapp.App;
 import com.gymapp.components.SidePanel;
-import com.gymapp.model.QRreader;
+import com.gymapp.service.QRService;
 
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
@@ -51,7 +51,7 @@ public class ScanController implements Initializable {
     private SidePanel sidePanel;
 
     private ObjectProperty<WritableImage> imageProperty = new SimpleObjectProperty<>();
-    private QRreader qrReader = new QRreader();
+    private QRService qrService = new QRService();
 
     private Webcam webcam;
     private Boolean showingDialog = false;
@@ -106,7 +106,7 @@ public class ScanController implements Initializable {
                             image.flush();
                             Platform.runLater(() -> imageProperty.set(ref.get()));
 
-                            String scanResult = qrReader.decodeQRCode(image);
+                            String scanResult = qrService.decodeQRCode(image);
                             if (scanResult != null) {
                                 onQrResult(scanResult);
                             }
@@ -137,20 +137,25 @@ public class ScanController implements Initializable {
         Platform.runLater(() -> {
             if (!showingDialog) {
                 showingDialog = true;
-                Alert confirmDialog = new Alert(Alert.AlertType.CONFIRMATION);
-                confirmDialog.setTitle("QR Code Detected");
-                confirmDialog.setHeaderText(String.format("%s", scanResult));
-                confirmDialog.initOwner(App.getWindow());
+                try {
+                    int resultId = Integer.parseInt(scanResult.split(" ")[0]);
+                    Alert confirmDialog = new Alert(Alert.AlertType.CONFIRMATION);
+                    confirmDialog.setTitle("QR Code Detected");
+                    confirmDialog.setHeaderText(String.format("%s", scanResult));
+                    confirmDialog.initOwner(App.getWindow());
 
-                ButtonType yes = new ButtonType("Confirm");
-                ButtonType no = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
-                confirmDialog.getButtonTypes().setAll(yes, no);
-                Optional<ButtonType> result = confirmDialog.showAndWait();
-                if (result.isPresent() && result.get() == yes) {
-                    stopWebCamStream();
-                    loadScanViewer(scanResult);
+                    ButtonType yes = new ButtonType("Confirm");
+                    ButtonType no = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+                    confirmDialog.getButtonTypes().setAll(yes, no);
+                    Optional<ButtonType> result = confirmDialog.showAndWait();
+                    if (result.isPresent() && result.get() == yes) {
+                        stopWebCamStream();
+                        loadScanViewer(resultId);
+                    }
+                    showingDialog = false;
+                } catch (NumberFormatException nfe) {
+                    nfe.printStackTrace();
                 }
-                showingDialog = false;
             }
         });
     }
@@ -166,13 +171,13 @@ public class ScanController implements Initializable {
      * @param scanResult - Precomputed data
      * @TODO               Move in App module if needed in other modules
      */
-    private void loadScanViewer(String scanResult) {
+    private void loadScanViewer(int resultId) {
         Parent root = null;
         Map<Class<ScanViewerController>, Callable<?>> creators = new HashMap<>();
         creators.put(ScanViewerController.class, new Callable<ScanViewerController>() {
             @Override
             public ScanViewerController call() throws Exception {
-                return new ScanViewerController(scanResult);
+                return new ScanViewerController(resultId);
             }
         });
         FXMLLoader loader = new FXMLLoader(App.class.getResource("views/scanViewer.fxml"));

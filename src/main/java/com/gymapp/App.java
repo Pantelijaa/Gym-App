@@ -13,7 +13,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ButtonBar;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
 
@@ -23,22 +22,21 @@ public class App extends Application {
 
     private static Scene scene;
     private static Stage window;
-    private static File database;
 
-    private final static String checkValue = "jdfhasdgfg32867jhbs";
+    public final static String CHECK_VALUE = "jdfhasdgfg32867jhbs";
+    public final static String CONFIG_FILE = "src/main/resources/META-INF/app.config";
 
     public static void main(String[] args) {
-        //BasicConfigurator.configure();
         launch();
     }
 
     @Override
     public void start(Stage stage) throws IOException {
         window = stage;
-        scene = new Scene(loadFXML("dbSelector"), 640, 480);
         window.setFullScreen(true);
-        stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+        window.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         window.setTitle("Gym app");
+        scene = new Scene(loadFXML("dbSelector"));
         window.setScene(scene);
         window.show();
     }
@@ -88,24 +86,12 @@ public class App extends Application {
         scene.setRoot(parent);
     }
 
-    public static void setDatabase(File DB) {
-        database = DB;
-    }
-
     public static Stage getWindow() {
         return window;
     }
 
     public static Parent getRoot() {
         return scene.getRoot();
-    }
-
-    public static File getDatabase() {
-        return database;
-    }
-
-    public final static String getCheckValue() {
-        return checkValue;
     }
 
 }
