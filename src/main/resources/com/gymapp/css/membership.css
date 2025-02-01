@@ -1,0 +1,109 @@
+#membership-table-view {
+    -fx-background-color: -fx-menu-background-color;
+    -fx-border-width: 0.02em;
+    -fx-border-color: black;
+
+}
+
+#membership-table-view *.scroll-bar:horizontal *.increment-button,
+.table-view *.scroll-bar:horizontal *.decrement-button {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+#membership-table-view *.scroll-bar:horizontal *.increment-arrow, 
+#membership-table-view *.scroll-bar:horizontal *.decrement-arrow {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-shape: null;
+}
+
+#membership-table-view .scroll-bar:vertical {
+    -fx-background-color: -fx-scroll-bar-background-color;
+    -fx-border-color: -fx-separator-background-color;
+}
+
+#membership-table-view .scroll-bar:vertical .thumb {
+    -fx-background-color: derive(-fx-scroll-bar-background-color,90%);
+	-fx-background-insets: 0, 0, 0;
+	-fx-background-radius: 0em;
+}
+
+#membership-table-view .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: -fx-scroll-bar-hover-background-color;
+}
+
+#membership-table-view .scroll-bar:vertical .thumb:pressed {
+    -fx-background-color: -fx-scroll-bar-active-background-color;
+}
+
+#membership-table-view .column-header-background .filler,
+#membership-table-view .column-header-background .nested-column-header,
+#membership-table-view .column-header {
+    -fx-background-color: -fx-base-background-color;
+}
+
+#membership-table-view .column-header-background .label {
+    -fx-text-fill: -fx-menu-foreground-color;
+}
+
+#membership-table-view .table-cell {
+    -fx-text-fill: -fx-menu-foreground-color;
+    -fx-border-color: -fx-separator-background-color;
+    -fx-padding: 0.3em;
+}
+
+#membership-table-view .table-row-cell {
+    -fx-background-color: -fx-menu-background-color;
+}
+
+#membership-table-view .table-row-cell:odd {
+    -fx-background-color: -fx-menu-active-background-color;
+}
+
+
+#membership-container {
+    -fx-background-color: -fx-base-background-color;
+    -fx-padding: 100px, 250px, 100px, 350px;
+}
+
+#membership-container .add-text-field {
+    -fx-background-color: -fx-menu-background-color;
+    -fx-border-radius: 0.3em;
+    -fx-text-fill: -fx-menu-foreground-color;
+}
+
+#membership-container .add-choice-box {
+    -fx-background-color: -fx-menu-background-color;
+    -fx-border-radius: 0.3em;
+}
+
+#membership-container .add-choice-box .context-menu {
+    -fx-background-color: -fx-menu-background-color;
+}
+
+#membership-container .add-choice-box .context-menu .label {
+    -fx-text-fill: -fx-menu-foreground-color;
+}
+
+#membership-container .add-choice-box .menu-item:focused {
+  -fx-background-color: -fx-menu-active-background-color;
+}
+
+#membership-container .add-choice-box .menu-item:focused .label {
+    -fx-text-fill: -fx-menu-active-foreground-color;
+}
+
+#membership-container .add-button {
+    -fx-background-color: -fx-menu-background-color;
+    -fx-text-fill: -fx-menu-foreground-color;
+}
+
+#membership-container .add-button:hover {
+    -fx-background-color: -fx-menu-active-background-color;
+    -fx-text-fill: -fx-menu-active-foreground-color;
+}

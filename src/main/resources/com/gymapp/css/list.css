@@ -2,22 +2,39 @@
     -fx-background-color: -fx-menu-background-color;
 }
 
-#members-table-view .scroll-bar {
+#members-table-view *.scroll-bar:horizontal *.increment-button,
+.table-view *.scroll-bar:horizontal *.decrement-button {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+#members-table-view *.scroll-bar:horizontal *.increment-arrow, 
+#members-table-view *.scroll-bar:horizontal *.decrement-arrow {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-shape: null;
+}
+
+#members-table-view .scroll-bar:vertical {
     -fx-background-color: -fx-scroll-bar-background-color;
     -fx-border-color: -fx-separator-background-color;
 }
 
-#members-table-view .scroll-bar .thumb {
+#members-table-view .scroll-bar:vertical .thumb {
     -fx-background-color: derive(-fx-scroll-bar-background-color,90%);
 	-fx-background-insets: 0, 0, 0;
 	-fx-background-radius: 0em;
 }
 
-#members-table-view .scroll-bar .thumb:hover {
+#members-table-view .scroll-bar:vertical .thumb:hover {
     -fx-background-color: -fx-scroll-bar-hover-background-color;
 }
 
-#members-table-view .scroll-bar .thumb:pressed {
+#members-table-view .scroll-bar:vertical .thumb:pressed {
     -fx-background-color: -fx-scroll-bar-active-background-color;
 }
 
