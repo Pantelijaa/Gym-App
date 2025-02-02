@@ -44,26 +44,25 @@ Make sure you have **Git**, **JDK** and **Maven** installed on your machine.
 
 1. **Clone the repository**
    
-   ```
+   ```bash
    git clone https://github.com/Pantelijaa/Gym-App.git
    ```
-   
-2. **Test the Application**
-   
-   ```sh
+
+2. **Test the Project**
+   ```bash
    mvn test
    ```
-   
-3. **Clean and package the files, plug-ins, and libraries before running the application**
+
+3. **Resolve dependencies before running the application**
    
    ```bash
-   mvn clean package
+   mvn dependency:resolve
    ```
    
 4. **Run the Application**
    
    ```bash
-    mvn clean javafx:run
+   mvn clean javafx:run
    ```
 
 ## Usage

@@ -16,8 +16,6 @@ import javafx.scene.control.ButtonBar;
 import java.io.IOException;
 import java.util.Optional;
 
-//import org.apache.log4j.BasicConfigurator;
-
 public class App extends Application {
 
     private static Scene scene;

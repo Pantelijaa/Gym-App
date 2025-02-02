@@ -13,13 +13,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.SequenceGenerator;
 
 @Entity
 @Table(name = "Memberships")
 public class Membership {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "Memberships_SEQ", initialValue = 1, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Memberships_SEQ")
     @Column(name = "membership_id")
     private int id;
 
@@ -67,7 +68,5 @@ public class Membership {
     public void setDuration(Period duration) {
         this.duration = duration;
     }
-
-
 
 }

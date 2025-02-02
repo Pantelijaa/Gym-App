@@ -23,6 +23,10 @@ import java.time.Period;
 import java.util.ResourceBundle;
 import java.util.List;
 
+
+/**
+ * Controller for {@code view} <a href ="{@docRoot}\..\resources\com\gymapp\views\membership.fxml">membership.fxml</a>.
+ */
 public class MembershipController implements Initializable {
     @FXML
     private TableColumn<Membership, String> idColumn;

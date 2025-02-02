@@ -72,7 +72,7 @@ public class GymMemberService {
                                             LocalDate.now().plus(membership.getDuration()));
         this.addCurentMonthToMemberHystory(newMember); 
         try {
-            memberId = gmdi.findLastInsertedId();
+            memberId = gmdi.nextInsertId();
             gmdi.create(newMember);
         } catch (Exception e) {
             e.printStackTrace();

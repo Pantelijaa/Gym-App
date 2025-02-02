@@ -46,5 +46,4 @@ public class HistoryService {
         return currentMonth;
     }
 
-
 }

@@ -4,6 +4,8 @@ import com.gymapp.converters.LocalDateConverter;
 
 import java.time.LocalDate;
 import java.util.Set;
+
+
 import java.util.HashSet;
 
 import jakarta.persistence.Column;
@@ -16,20 +18,15 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
-/**
- * The {@code GymMember} class represents a member of a gym.
- * <p>
- * Includes empty Constcructor and Constructor with parameters for all attributes. 
- * Has setters and getters defined for all fields.
- * </p>
- */
 @Entity
 @Table(name = "Members")
 public class GymMember {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "Members_SEQ", initialValue = 100, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Members_SEQ")
     @Column(name = "member_id")
     private int id;
 

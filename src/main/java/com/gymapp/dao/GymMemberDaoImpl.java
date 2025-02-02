@@ -30,22 +30,42 @@ public class GymMemberDaoImpl implements Dao<GymMember> {
         entityManager = emf.createEntityManager();
     }
 
+    /**
+     * {@InheritDoc}
+     * 
+     * @return Single match of type {@code GymMember}
+     */
     @Override
     public GymMember read(int id) {
         return entityManager.find(GymMember.class, id);
     }
-    
+
+    /**
+     *  {@inheritDoc} 
+     *
+     *  @return {@code List<GymMember>} populated with all enitites from <b>Members</b> table
+     */ 
     @Override
     public List<GymMember> readAll() {
         Query query = entityManager.createQuery("SELECT e FROM GymMember e");
         return castList(GymMember.class, query.getResultList());
     }
 
+    /**
+     * {@InheritDoc}
+     * 
+     * @param gymMember         Entity of type {@code GymMember}
+     */
     @Override
     public void create(GymMember gymMember) {
         executeInsideTansaction(entityManager, entityManager -> entityManager.persist(gymMember));
     }
 
+    /**
+     * {@InheritDoc}
+     * 
+     * @param gymMember         Entity of type {@code GymMember}
+     */
     @Override
     public void update(GymMember gymMember) {
         executeInsideTansaction(entityManager, entityManager -> entityManager.merge(gymMember));
@@ -56,8 +76,11 @@ public class GymMemberDaoImpl implements Dao<GymMember> {
         executeInsideTansaction(entityManager, entityManager -> entityManager.remove(gymMember));
     }
 
+    /**
+     * {@InheritDoc}
+     */
     @Override
-    public Integer findLastInsertedId() {
+    public Integer nextInsertId() {
         return (Integer)entityManager.createNativeQuery("SELECT next_val " +
                                                         "FROM Members_SEQ ",
                                                         Integer.class)
