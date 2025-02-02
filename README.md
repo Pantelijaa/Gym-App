@@ -29,7 +29,7 @@ Application for tracking subscriptions. Codebase is separated in multiple layers
 |     Layer     	| Responsibility                                                                                                                         	|
 |:-------------:	|----------------------------------------------------------------------------------------------------------------------------------------	|
 |  **Database** 	| Stores any amount of data, can be created/opened independently from application itself. Forced to have specific `Tables` and `Columns` 	|
-|   **Entity**  	| Java Object representation of `Tables` from `Database`. **Hibernate** implementation of **Jakarta Persistence** (JPA)** is used for Mapping.   	|
+|   **Entity**  	| Java Object representation of `Tables` from `Database`. **Hibernate** implementation of **Jakarta Persistence (JPA)** is used for Mapping.   	|
 |    **Dao**    	| Performs basic `CRUD` operations on **Entity** for accesing data                                                                       	|
 |  **Service**  	| Performs more complex algorithms on data                                                                                               	|
 | **Contoller** 	| Handles end user UI/UX                                                                                                         	|
