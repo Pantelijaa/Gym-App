@@ -16,11 +16,27 @@ import java.util.Properties;
 public class DBSelectorController {
 
     private HistoryService hs;
+    String dbPath;
+
+    public DBSelectorController() {
+        Properties prop = new Properties();
+        PropertiesHelper.loadPropertiesFromFile(prop, App.CONFIG_FILE);
+        dbPath = prop.getProperty("db.path");
+    }
 
     public void handleOpen() {
+        File file;
+        if (dbPath != null && dbPath != "" && dbPath.endsWith(".db")) {
+            file = new File(dbPath);
+            if (file.exists() && !file.isDirectory()) {
+                openDatabase(new File(dbPath));
+                return;
+            }
+        }
+    
         final FileChooser fileChooser = new FileChooser();
         configureOpenDialog(fileChooser);
-        File file = fileChooser.showOpenDialog(App.getWindow());
+        file = fileChooser.showOpenDialog(App.getWindow());
         if (file != null && file.getAbsolutePath().endsWith(".db")) {
             openDatabase(file);
         }
