@@ -5,7 +5,6 @@ import com.gymapp.converters.LocalDateConverter;
 import java.time.LocalDate;
 import java.util.Set;
 
-
 import java.util.HashSet;
 
 import jakarta.persistence.Column;

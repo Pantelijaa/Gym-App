@@ -41,9 +41,9 @@ public class ScanViewerController implements Initializable {
     @FXML
     private SidePanel sidePanel;
 
-    GymMemberService gms;
-    MembershipService ms;
-    GymMember member;
+    private final GymMemberService gms;
+    private final MembershipService ms;
+    private final GymMember member;
 
     public ScanViewerController(int resultId) {
         this.gms = new GymMemberService();

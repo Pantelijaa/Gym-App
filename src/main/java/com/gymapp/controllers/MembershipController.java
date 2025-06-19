@@ -23,7 +23,6 @@ import java.time.Period;
 import java.util.ResourceBundle;
 import java.util.List;
 
-
 /**
  * Controller for {@code view} <a href ="{@docRoot}\..\resources\com\gymapp\views\membership.fxml">membership.fxml</a>.
  */
@@ -46,7 +45,7 @@ public class MembershipController implements Initializable {
     @FXML
     private SidePanel sidePanel;
 
-    private MembershipService ms;
+    private final MembershipService ms;
 
     public MembershipController() {
         this.ms = new MembershipService();

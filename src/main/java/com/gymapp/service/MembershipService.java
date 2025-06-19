@@ -12,7 +12,7 @@ import javafx.collections.ObservableList;
 
 public class MembershipService {
 
-    MembershipDaoImpl mdi;
+    private final MembershipDaoImpl mdi;
 
     public MembershipService() {
         this.mdi = new MembershipDaoImpl();

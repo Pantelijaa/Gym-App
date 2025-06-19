@@ -35,7 +35,7 @@ public class ListController implements Initializable {
     @FXML 
     private SidePanel sidePanel;
 
-    private GymMemberService gms;
+    private final GymMemberService gms;
 
     public ListController() {
         this.gms = new GymMemberService();

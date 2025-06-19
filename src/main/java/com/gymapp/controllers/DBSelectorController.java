@@ -16,7 +16,7 @@ import java.util.Properties;
 public class DBSelectorController {
 
     private HistoryService hs;
-    String dbPath;
+    private final String dbPath;
 
     public DBSelectorController() {
         Properties prop = new Properties();

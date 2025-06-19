@@ -16,7 +16,7 @@ import javafx.collections.transformation.FilteredList;
 
 public class GymMemberService {
 
-    GymMemberDaoImpl gmdi;
+    private final GymMemberDaoImpl gmdi;
 
     public GymMemberService() {
         this.gmdi = new GymMemberDaoImpl();

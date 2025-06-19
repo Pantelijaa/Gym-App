@@ -20,7 +20,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 
-
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
@@ -38,8 +37,8 @@ public class AddController implements Initializable {
     @FXML
     private SidePanel sidePanel;
 
-    private GymMemberService gms;
-    private MembershipService ms;
+    private final GymMemberService gms;
+    private final MembershipService ms;
 
     public AddController() {
         this.gms = new GymMemberService();

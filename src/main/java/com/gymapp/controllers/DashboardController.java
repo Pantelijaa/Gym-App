@@ -34,8 +34,8 @@ public class DashboardController implements Initializable {
     @FXML
     private SidePanel sidePanel;
 
-    private GymMemberService gms;
-    private HistoryService hs;
+    private final GymMemberService gms;
+    private final HistoryService hs;
 
     public DashboardController() {
         this.gms = new GymMemberService();

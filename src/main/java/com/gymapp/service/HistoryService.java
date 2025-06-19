@@ -8,7 +8,7 @@ import com.gymapp.entity.History;
 
 public class HistoryService {
 
-    HistoryDaoImpl hdi;
+   private final HistoryDaoImpl hdi;
 
     public HistoryService() {
         this.hdi = new HistoryDaoImpl();
