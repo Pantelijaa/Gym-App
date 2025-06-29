@@ -12,7 +12,7 @@
 
 ## About The Project
 
-This project contains simple app for tracking members and memberships. The test database with generated QR codes is located in [Gym-App/tree/master/src/main/resources/com/gymapp/db](https://github.com/Pantelijaa/Gym-App/tree/master/src/main/resources/com/gymapp/db)
+This project contains simple app for tracking members and memberships. The test database with generated QR codes is located in [Gym-App/tree/master/src/main/resources/com/gymapp/db](https://github.com/Pantelijaa/Gym-App/tree/master/src/main/resources/com/gymapp/db).
 
 ### Built With
 * [![Java][Java-badge]][Java-url]
@@ -85,13 +85,13 @@ Below is a overview of the project structure:
 │   │   │   ├── images
 │   │   │   ├── QR                              -> QR codes associated with test database
 │   │   │   ├── views                           -> scenes fxml files
-│   │   │   │  ├── add.fxml
-│   │   │   │  ├── dashboard.fxml
-│   │   │   │  ├── dbSelector.fxml
-│   │   │   │  ├── list.fxml
-│   │   │   │  ├── membership.fxml
-│   │   │   │  ├── scan.fxml
-│   │   │   │  ├── scanViewer.fxml
+│   │   │   │   ├── add.fxml
+│   │   │   │   ├── dashboard.fxml
+│   │   │   │   ├── dbSelector.fxml
+│   │   │   │   ├── list.fxml
+│   │   │   │   ├── membership.fxml
+│   │   │   │   ├── scan.fxml
+│   │   │   │   ├── scanViewer.fxml
 │   │   ├── META-INF
 │   │   │   ├── app.config                      -> configuration file for saving app state
 │   │   │   ├── persistence.xml                 -> presistence settings
