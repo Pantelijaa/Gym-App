@@ -10,12 +10,9 @@
 
 # Gym-App
 
-> [!IMPORTANT]
-> Project is still in early develpoment.
-
 ## About The Project
 
-Application for tracking subscriptions. Codebase is separated in multiple layers to ensure proper data flow: **`Database` <-> `Entity` <-> `Dao` <-> `Service` <-> `Controller`**.
+This project contains simple app for tracking members and memberships. The test database with generated QR codes is located in [Gym-App/tree/master/src/main/resources/com/gymapp/db](https://github.com/Pantelijaa/Gym-App/tree/master/src/main/resources/com/gymapp/db)
 
 ### Built With
 * [![Java][Java-badge]][Java-url]
@@ -24,15 +21,84 @@ Application for tracking subscriptions. Codebase is separated in multiple layers
 * [![Maven][Maven-badge]][Maven-url]
 * [![Hibernate][Hibernate-badge]][Hibernate-url]
 
-### Project Architecture layers
-
+### Architecture Layers
+Project is split into multiple layers:
 |     Layer     	| Responsibility                                                                                                                         	|
 |:-------------:	|----------------------------------------------------------------------------------------------------------------------------------------	|
 |  **Database** 	| Stores any amount of data, can be created/opened independently from application itself. Forced to have specific `Tables` and `Columns` 	|
 |   **Entity**  	| Java Object representation of `Tables` from `Database`. **Hibernate** implementation of **Jakarta Persistence (JPA)** is used for Mapping.   	|
-|    **Dao**    	| Performs basic `CRUD` operations on **Entity** for accesing data                                                                       	|
+|    **DAO**    	| Performs basic `CRUD` operations on **Entity** for accesing data                                                                       	|
 |  **Service**  	| Performs more complex algorithms on data                                                                                               	|
 | **Contoller** 	| Handles end user UI/UX                                                                                                         	|
+
+### Structure Tree
+Below is a overview of the project structure:
+
+```
+├── src/main
+│   ├── java
+│   │   ├── com/gymapp
+│   │   │   ├── components                      -> reusable components logic
+│   │   │   │   ├── BottomBar.java
+│   │   │   │   ├── SidePanel.java
+│   │   │   ├── controllers                     -> scenes logic
+│   │   │   │   ├── AddController.java
+│   │   │   │   ├── DashboardController.java
+│   │   │   │   ├── DBSelectorController.java
+│   │   │   │   ├── ListController.java
+│   │   │   │   ├── MembershipController.java
+│   │   │   │   ├── ScanController.java
+│   │   │   │   ├── ScanViewerController.java
+│   │   │   ├── converters                      -> data converters to satisfy SQLite limitations
+│   │   │   │   ├── LocalDateConverter.java
+│   │   │   │   ├── PeriodConverter.java
+│   │   │   │   ├── YearMonthCovnerter.java
+│   │   │   ├── dao                             -> DAO layer
+│   │   │   │   ├── Dao.java
+│   │   │   │   ├── GymMemberDaoImpl.java
+│   │   │   │   ├── HistoryDaoImpl.java
+│   │   │   │   ├── MembershipDaoImpl.java
+│   │   │   ├── entity                          -> entity layer
+│   │   │   │   ├── GymMember.java
+│   │   │   │   ├── History.java
+│   │   │   │   ├── Membership.java
+│   │   │   ├── enums                     
+│   │   │   │   ├── FxmlViewEnum.java           -> abstaction to more intuitive scene changes
+│   │   │   │   ├── MembershipEnum.java         -> assures proper membership format
+│   │   │   ├── helpers
+│   │   │   │   ├── PropertiesHelper.java       -> handles app.config state
+│   │   │   ├── service                         -> service layer
+│   │   │   │   ├── GymMemberService.java
+│   │   │   │   ├── HistoryService.java
+│   │   │   │   ├── MembershipService.java
+│   │   │   │   ├── QRService.java
+│   │   │   ├── App.java                        -> main app initialization file
+│   │   ├── module-info.java
+│   ├── resources
+│   │   ├── com/gymapp
+│   │   │   ├── components                      -> reusable components fxml files
+│   │   │   │   ├── bottomBar.fxml
+│   │   │   │   ├── sidePanel.fxml
+│   │   │   ├── css
+│   │   │   ├── db
+│   │   │   │   ├── test.db                     -> database for testing puropose
+│   │   │   ├── images
+│   │   │   ├── QR                              -> QR codes associated with test database
+│   │   │   ├── views                           -> scenes fxml files
+│   │   │   │  ├── add.fxml
+│   │   │   │  ├── dashboard.fxml
+│   │   │   │  ├── dbSelector.fxml
+│   │   │   │  ├── list.fxml
+│   │   │   │  ├── membership.fxml
+│   │   │   │  ├── scan.fxml
+│   │   │   │  ├── scanViewer.fxml
+│   │   ├── META-INF
+│   │   │   ├── app.config                      -> configuration file for saving app state
+│   │   │   ├── persistence.xml                 -> presistence settings
+├── .gitignore
+├── README.md
+├── pom.xml
+```
 
 ## Getting Started
 
@@ -48,7 +114,7 @@ Make sure you have **Git**, **JDK** and **Maven** installed on your machine.
    git clone https://github.com/Pantelijaa/Gym-App.git
    ```
 
-2. **Test the Project**
+2. **Test the project**
    ```bash
    mvn test
    ```
@@ -59,7 +125,7 @@ Make sure you have **Git**, **JDK** and **Maven** installed on your machine.
    mvn dependency:resolve
    ```
    
-4. **Run the Application**
+4. **Run the application**
    
    ```bash
    mvn clean javafx:run
